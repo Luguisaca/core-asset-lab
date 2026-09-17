@@ -31,3 +31,21 @@ jobs:
 
       - name: Production build
         run: npm run build
+
+      - name: Smoke test built app
+        shell: bash
+        run: |
+          npx --yes serve dist -l 4173 > /tmp/core-asset-lab-serve.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+
+          for attempt in {1..20}; do
+            if curl --fail --silent --show-error http://127.0.0.1:4173/ -o /tmp/core-asset-lab.html; then
+              break
+            fi
+            sleep 1
+          done
+
+          test -s /tmp/core-asset-lab.html
+          grep -q 'Core Asset Lab' /tmp/core-asset-lab.html
+          grep -q 'type="file"' /tmp/core-asset-lab.html
