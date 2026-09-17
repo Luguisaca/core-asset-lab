@@ -20,36 +20,22 @@ Static inspection found no functional dependency on `luguisaca.com`, its pages, 
 - browser-side GLB/GLTF processing
 - no application backend in the current architecture
 
-The Node baseline was raised from 22.12.0 after the first independent CI bootstrap exposed current transitive package engine requirements above that version. Node 22.19.0 is the CI baseline; Node 24.19.0 is also directly exercised on Windows.
+The Node baseline was raised from 22.12.0 after the first independent CI bootstrap exposed current transitive package engine requirements above that version. Node 22.19.0 is the validated CI baseline; Node 24.19.0 is also directly exercised on Windows.
 
 ## V1 capabilities
 
-The V1 baseline includes:
+The V1 baseline includes local `.glb`/`.gltf` loading, Asset Audit and Performance information, Wireframe, Bounding Box, Axes, Copy Config, Export Report, Mesh/Material Inspector and visibility, Grid, real Normals, Skeleton helpers, Center/Refit, Snapshot PNG, Asset Validation, HIDE ALL/SHOW ALL, scene/render/FX controls, GLTF animation controls, responsive behavior and ES/EN UI.
 
-- local `.glb` / `.gltf` loading;
-- Asset Audit and Performance information;
-- Wireframe, Bounding Box and Axes;
-- Copy Config and Export Report;
-- Mesh/Material Inspector and per-mesh visibility;
-- Grid, real Normals and Skeleton helpers;
-- Center/Refit and Snapshot PNG;
-- Asset Validation;
-- HIDE ALL / SHOW ALL;
-- scene, render and FX controls;
-- GLTF animation playback/selection/speed;
-- responsive behavior and ES/EN interface.
-
-Historical pre-extraction QA exercised Fox, RiggedSimple and BrainStem. The post-migration manual acceptance confirms the independent application is visually and functionally behaving as expected in the owner's exercised workflow; it is not a universal compatibility certification for every GLB/GLTF/browser/GPU combination.
+Historical pre-extraction QA exercised Fox, RiggedSimple and BrainStem. Post-migration manual acceptance confirms the independent application is visually and functionally behaving as expected in the owner's exercised workflow; this is not universal certification for every GLB/GLTF/browser/GPU combination.
 
 ## Migration provenance
 
-Source repository: `Luguisaca/luguisaca.com`
+- Source repository: `Luguisaca/luguisaca.com`
+- Source branch: `extract/core-asset-lab`
+- Source checkpoint: `feefc5573ebd646534dbe9ad2eb397a02724d914`
+- Formal product boundary: Sprint 01
 
-Source branch: `extract/core-asset-lab`
-
-Source checkpoint: `feefc5573ebd646534dbe9ad2eb397a02724d914`
-
-The formal project boundary is Sprint 01. The source website retains its own Core/Hero validation Lab; post-boundary generalized viewer/inspection/calibration work belongs here.
+The source website retains its own Core/Hero validation Lab; post-boundary generalized viewer/inspection/calibration work belongs here.
 
 ## Validation evidence
 
@@ -60,13 +46,11 @@ The formal project boundary is Sprint 01. The source website retains its own Cor
 
 ### Automated independent QA
 
-GitHub Actions run #2 (`35177543306`) passed dependency installation, `npm run check` and production build after correcting a real TypeScript material-union issue.
+- Run #2 (`35177543306`): **PASS** — dependency installation, `npm run check` and production build after correcting a real TypeScript material-union issue.
+- Run #3 (`35177699229`): **PASS** — generated `dist/` served over HTTP and expected Core Asset Lab/file-input surface found.
+- Run #5 (`35179217936`): **PASS** — Node 22.19.0 supported baseline, dependency installation, check, build and smoke-test workflow completed successfully.
 
-GitHub Actions run #3 (`35177699229`) additionally passed the generated-app smoke test: the static `dist/` artifact was served over HTTP and the expected Core Asset Lab/file-input surface was found.
-
-A later CI run validates the updated Node 22.19.0 supported baseline; its result must be checked before the V1 merge gate is closed.
-
-The current CI uses `npm install`, not `npm ci`, because a committed `package-lock.json` is not yet present. Therefore the bootstrap is clean but not yet a deterministic lockfile install.
+The current CI uses `npm install`, not `npm ci`, because a committed `package-lock.json` is not yet present. The bootstrap is clean but not yet a deterministic lockfile installation.
 
 ### Independent manual Windows QA
 
@@ -104,12 +88,12 @@ The existing `LICENSE` file is intentionally unchanged. The long-term independen
 
 ## V1 merge gate
 
-Before `core-asset-lab-v1` is promoted to `main`:
+Completed evidence: migration integrity, static independence, Node 22.19 CI baseline, clean bootstrap/check/build/smoke QA, independent Windows runtime QA and canonical documentation consolidation.
 
-1. confirm the final CI run on the documented Node 22.19.0 baseline is green;
-2. keep the independent manual QA evidence above as the acceptance record;
-3. complete the canonical documentation consistency audit;
-4. review PR #1 as a whole;
-5. obtain explicit project-owner approval for merge.
+Still required before `core-asset-lab-v1` is promoted to `main`:
+
+1. review PR #1 as a whole;
+2. confirm the current branch-head CI remains green after documentation consolidation;
+3. obtain explicit project-owner approval for merge.
 
 No merge, release, public demo deployment or source-repository cleanup is implied by this document.
