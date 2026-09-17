@@ -21,13 +21,13 @@ While V1 remains on its validation branch:
 git clone https://github.com/Luguisaca/core-asset-lab.git
 cd core-asset-lab
 git switch core-asset-lab-v1
-npm install
+npm ci
 npm run dev
 ```
 
 Astro prints the local development URL. Open it and load a `.glb` or `.gltf` file through the picker or drag/drop surface.
 
-`npm install` installs the dependencies declared by the project. It is required after a clean clone because `node_modules/` is intentionally not versioned.
+`npm ci` is the normal clean-clone path and installs the exact dependency graph committed in `package-lock.json`. Use `npm install` only when intentionally changing dependencies or regenerating/updating the lockfile, then review and validate that change before committing it.
 
 `npm run check` is not required merely to use the development server. It is a QA/development command that performs Astro/TypeScript checks.
 
@@ -40,6 +40,7 @@ A `.glb` normally packages its resources into one binary asset. A `.gltf` may re
 ## Validation and production-style local build
 
 ```bash
+npm ci
 npm run check
 npm run build
 npm run preview
@@ -47,15 +48,29 @@ npm run preview
 
 `npm run build` runs `astro check` before `astro build` and produces the static `dist/` application. Running `check` separately is useful when collecting explicit validation evidence.
 
-The automated QA gate performs dependency installation, Astro check, production build and an HTTP smoke test against the built `dist/` application.
+The automated QA gate uses Node 22.19.0 and performs locked dependency installation with `npm ci`, Astro check, production build and an HTTP smoke test against the built `dist/` application. Run #18 (`35180417863`) validated this deterministic path successfully.
 
 A release/checkpoint must record commands actually executed, environment, results and any manual functional/visual QA. Automated checks support but do not replace manual approval for material UI/3D behavior.
 
 ## Dependency reproducibility
 
-The repository currently has no committed `package-lock.json`. CI therefore uses `npm install`, which has demonstrated a clean bootstrap but is not a deterministic `npm ci` installation.
+`package-lock.json` is committed and is the dependency source of truth for reproducible clean installations. CI and clean local validation use `npm ci`; this fails rather than silently rewriting the lockfile when `package.json` and the lockfile are inconsistent.
 
-Before describing builds as lockfile-reproducible, generate the lockfile from the independent project, commit and review it, change CI to `npm ci`, and validate the resulting workflow. Do not fabricate or copy a lockfile from `luguisaca.com`.
+The validated V1 path is therefore:
+
+```text
+package.json + package-lock.json
+        ↓
+      npm ci
+        ↓
+   astro check
+        ↓
+ production build
+        ↓
+ HTTP smoke test
+```
+
+Do not copy a lockfile from `luguisaca.com` or another project. Dependency updates must originate in this independent repository and be reviewed with the resulting lockfile diff.
 
 ## Static artifact
 
@@ -90,6 +105,7 @@ Future releases should identify a source commit/tag and may include validated st
 Diagnose the layer that actually failed:
 
 - clone/install and Node/npm compatibility;
+- lockfile/package manifest consistency;
 - Astro development server;
 - Astro/TypeScript check;
 - production build;
