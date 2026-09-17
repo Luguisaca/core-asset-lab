@@ -2,28 +2,40 @@
 
 Browser-side laboratory for loading, inspecting, validating, calibrating and presenting local GLB/GLTF assets.
 
-Core Asset Lab is an independent project maintained by LUGUISACA / Luis Salamanca. It originated as engineering tooling for the LUGUISACA Core/Hero and became a separate reusable project at the Sprint 01 boundary. The independent V1 was extracted from `Luguisaca/luguisaca.com` branch `extract/core-asset-lab`, source commit `feefc5573ebd646534dbe9ad2eb397a02724d914`.
+Core Asset Lab is an independent project maintained by **LUGUISACA / Luis Salamanca**. It originated as engineering tooling for the LUGUISACA Core/Hero and became a separate reusable project at the Sprint 01 boundary. The independent V1 was extracted from `Luguisaca/luguisaca.com` branch `extract/core-asset-lab`, source commit `feefc5573ebd646534dbe9ad2eb397a02724d914`.
 
-## What it does
+## What V1 provides
 
-The current V1 provides local GLB/GLTF loading and drag/drop, Three.js rendering and orbit controls, auto-fit and telemetry, model/scene/render/FX controls, wireframe, bounding box, axes, normals and skeleton helpers, mesh/material inspection and visibility, embedded GLTF animation playback, asset validation, snapshot PNG, configuration/report export, diagnostic console, ES/EN UI and responsive layouts.
+The current V1 includes local GLB/GLTF loading and drag/drop, Three.js rendering and orbit controls, auto-fit and telemetry, model/scene/render/FX controls, wireframe, bounding box, axes, normals and skeleton helpers, mesh/material inspection and visibility, embedded GLTF animation playback, asset validation, snapshot PNG, configuration/report export, diagnostic console, ES/EN UI and responsive layouts.
 
 Selected model files are processed by the browser runtime. The application has no backend in the current architecture and the model-loading flow does not intentionally upload selected model contents.
 
-## Use it today
+## Requirements
 
-Core Asset Lab is currently a source-based application. Node.js >= 22.12.0 is required.
+For the current source/local distribution path:
+
+- Git, when cloning the repository;
+- Node.js `>=22.19.0`;
+- npm;
+- a modern browser with WebGL support.
+
+The application currently accepts `.glb` and `.gltf` selections up to 100 MB. A standalone `.gltf` may reference companion buffers/textures; support for every multi-file GLTF layout must not be assumed without model-specific validation.
+
+## Run locally
 
 ```bash
 git clone https://github.com/Luguisaca/core-asset-lab.git
 cd core-asset-lab
+git switch core-asset-lab-v1
 npm install
 npm run dev
 ```
 
-Open the local URL printed by Astro, then select or drag a `.glb` or `.gltf` file into the Lab. The current loader accepts files up to 100 MB.
+Open the local URL printed by Astro and select or drag a model into the Lab.
 
-For a production-style local build:
+`npm install` resolves and installs the dependencies declared by the project. `npm run check` is a development/QA command, not a requirement for simply opening the Lab.
+
+For explicit validation and a production-style local build:
 
 ```bash
 npm run check
@@ -31,43 +43,47 @@ npm run build
 npm run preview
 ```
 
-The generated application is static and browser-side.
+The generated `dist/` application is static and browser-side.
 
-## Distribution paths
+> The `git switch core-asset-lab-v1` step is required only while V1 remains under pre-merge validation. After an explicitly approved merge, canonical branch instructions must be updated rather than left stale.
 
-Only the source/development path above is currently established. The project is being prepared for additional user-friendly distribution paths, but they must not be described as available until implemented and validated:
+## Validation status
 
-- hosted web application;
-- container/Docker distribution;
-- downloadable desktop application or installer;
-- versioned release artifacts with checksums.
+The independent V1 has passed migration tree/blob integrity review and static independence review. GitHub Actions has also demonstrated clean dependency bootstrap, Astro/TypeScript checking, production build and an HTTP smoke test of the generated application. Independent manual Windows QA was performed on 2026-09-16/17 with Node.js 24.19.0 and npm 11.7.0; installation, checks, development runtime, visual behavior and the exercised V1 functionality were accepted by the project owner.
 
-Architecture and packaging choices for those paths require explicit decisions and QA before release.
+This does **not** mean every possible GLB/GLTF asset, browser, GPU or operating system has been certified. See `docs/CURRENT-STATE.md` for the canonical evidence and remaining gates.
 
-## Development commands
+## Distribution status
 
-- `npm run dev` — Astro development server.
-- `npm run check` — Astro/TypeScript checks.
-- `npm run build` — runs checks and creates the static build.
-- `npm run preview` — serves the generated build locally for preview.
+Supported now:
 
-See `CONTRIBUTING.md` for contribution workflow and `docs/operations/README.md` for the current operating model.
+- source/local execution with Node.js + npm;
+- static production build generated by Astro.
 
-## Project status
+Planned but **not yet supported/released**:
 
-The independent repository migration has passed source-tree integrity comparison and static independence review. Clean installation, `check`, `build` and independent functional QA remain required before V1 is promoted as a validated standalone release. See `docs/CURRENT-STATE.md` for the canonical current status.
+- official hosted LUGUISACA demo at a route still to be defined;
+- Docker/container distribution;
+- downloadable desktop application/installer;
+- versioned downloadable release artifacts/checksums.
 
-## Architecture and decisions
+These paths require implementation and QA before being advertised as available.
 
-- `docs/architecture/README.md` — architecture and trust boundaries.
+## Project documentation
+
+- `AGENTS.md` — operating/governance rules for human and automated contributors.
+- `docs/CURRENT-STATE.md` — canonical current status and QA evidence.
+- `docs/architecture/README.md` — runtime architecture and trust boundaries.
+- `docs/operations/README.md` — installation, validation, build and distribution operations.
 - `docs/decisions/` — accepted architectural/project decisions.
-- `docs/EXTRACTION.md` — historical extraction record.
+- `docs/EXTRACTION.md` — historical extraction/provenance record.
 - `SECURITY.md` — security posture and vulnerability reporting guidance.
+- `CONTRIBUTING.md` — contribution workflow.
 
 ## Scope boundary
 
-This repository does not contain the `luguisaca.com` landing site, professional content, LUGUISACA production Core/Hero assets, personal/brand assets, Cloudflare website configuration or website-specific QA. Those remain separate concerns.
+This repository does not contain the `luguisaca.com` landing site, professional content, LUGUISACA production Core/Hero assets, personal/brand assets, Cloudflare website configuration or website-specific QA. The website may later consume a validated distribution of Core Asset Lab as a public demo, but that does not merge the two project lifecycles.
 
 ## License
 
-The repository contains its current `LICENSE` file unchanged from the extraction. Licensing for the independent project has not yet been re-decided. Do not infer additional permissions from the public visibility of the repository; the licensing decision will be handled explicitly and separately.
+The repository contains its current `LICENSE` file unchanged from the extraction. The independent-project licensing model has not been re-decided. Repository access or visibility must not be interpreted as granting permissions beyond the terms actually present in `LICENSE`.
