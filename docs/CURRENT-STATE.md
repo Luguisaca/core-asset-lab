@@ -86,14 +86,20 @@ Planned channels must not be described as supported until implemented and valida
 
 The existing `LICENSE` file is intentionally unchanged. The long-term independent-project usage/license model remains a deliberate pending decision and must not be inferred from the source website, repository visibility or planned distribution channels.
 
+## Pull-request state
+
+PR #1 (`core-asset-lab-v1` → `main`, title `Add files via upload`) was closed without merge on 2026-09-17 and points to an earlier branch checkpoint. It is historical migration trace, not the V1 promotion vehicle.
+
+When V1 promotion is authorized, use a fresh PR/review from the then-current validated `core-asset-lab-v1` HEAD to `main`; do not rely on PR #1 as evidence of the final diff.
+
 ## V1 merge gate
 
 Completed evidence: migration integrity, static independence, Node 22.19 CI baseline, clean bootstrap/check/build/smoke QA, independent Windows runtime QA and canonical documentation consolidation.
 
 Still required before `core-asset-lab-v1` is promoted to `main`:
 
-1. review PR #1 as a whole;
-2. confirm the current branch-head CI remains green after documentation consolidation;
+1. confirm the current branch-head CI remains green after documentation consolidation;
+2. create/review the final promotion PR from the validated branch HEAD;
 3. obtain explicit project-owner approval for merge.
 
 No merge, release, public demo deployment or source-repository cleanup is implied by this document.
