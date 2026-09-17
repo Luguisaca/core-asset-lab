@@ -49,8 +49,9 @@ The source website retains its own Core/Hero validation Lab; post-boundary gener
 - Run #2 (`35177543306`): **PASS** — dependency installation, `npm run check` and production build after correcting a real TypeScript material-union issue.
 - Run #3 (`35177699229`): **PASS** — generated `dist/` served over HTTP and expected Core Asset Lab/file-input surface found.
 - Run #5 (`35179217936`): **PASS** — Node 22.19.0 supported baseline, dependency installation, check, build and smoke-test workflow completed successfully.
+- Run #18 (`35180417863`): **PASS** — committed lockfile, Node 22.19.0, deterministic `npm ci`, Astro check, production build and built-app HTTP smoke test all completed successfully on commit `43d70bdffd47d85900a4410b5749f71cd8ce3f7a`.
 
-The current CI uses `npm install`, not `npm ci`, because a committed `package-lock.json` is not yet present. The bootstrap is clean but not yet a deterministic lockfile installation.
+The repository now commits `package-lock.json` (lockfileVersion 3). CI uses `npm ci --no-audit --no-fund`, so the V1 dependency bootstrap is lockfile-reproducible rather than an unlocked `npm install` bootstrap.
 
 ### Independent manual Windows QA
 
@@ -63,17 +64,19 @@ Observed environment:
 
 Observed result:
 
-- dependency installation: **PASS**;
+- deterministic `npm ci`: **PASS** with 0 reported vulnerabilities;
 - `npm run check`: **PASS** with 0 errors, 0 warnings and 4 non-blocking hints;
+- `npm run build`: **PASS** with static `dist/` output;
 - development server: **PASS**;
 - visual behavior: **PASS** by project-owner acceptance;
 - exercised V1 functionality: **PASS** by project-owner acceptance.
 
-The remaining hints include Three.js `Clock` deprecation notices and are tracked as non-blocking technical debt rather than silently refactored during V1 closure.
+The remaining hints include Three.js `Clock` deprecation notices and an unused `modelScale`; the production build also reports a non-blocking large-chunk advisory. These remain tracked technical debt rather than being silently refactored during V1 closure.
 
 ## Distribution status
 
 - Source/local Node + npm workflow: **VALIDATED**.
+- Lockfile-reproducible `npm ci` workflow: **VALIDATED**.
 - Static Astro build: **VALIDATED**.
 - Official hosted LUGUISACA demo: **NOT IMPLEMENTED**; route remains intentionally undefined.
 - Docker distribution: **NOT IMPLEMENTED**.
@@ -94,11 +97,11 @@ When V1 promotion is authorized, use a fresh PR/review from the then-current val
 
 ## V1 merge gate
 
-Completed evidence: migration integrity, static independence, Node 22.19 CI baseline, clean bootstrap/check/build/smoke QA, independent Windows runtime QA and canonical documentation consolidation.
+Completed evidence: migration integrity, static independence, Node 22.19 CI baseline, deterministic lockfile bootstrap/check/build/smoke QA, independent Windows runtime QA and canonical documentation consolidation.
 
 Still required before `core-asset-lab-v1` is promoted to `main`:
 
-1. confirm the current branch-head CI remains green after documentation consolidation;
+1. confirm the documentation-only closure commit preserves a green branch-head CI;
 2. create/review the final promotion PR from the validated branch HEAD;
 3. obtain explicit project-owner approval for merge.
 
