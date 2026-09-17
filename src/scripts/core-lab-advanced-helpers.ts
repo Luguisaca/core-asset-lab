@@ -1,8 +1,12 @@
 import './core-lab-inspection-defaults';
-import { Box3, Mesh, Object3D, Scene, SkeletonHelper, Vector3 } from 'three';
+import { Box3, Material, Mesh, Object3D, Scene, SkeletonHelper, Vector3 } from 'three';
 import { VertexNormalsHelper } from 'three/examples/jsm/helpers/VertexNormalsHelper.js';
 
 export type AdvancedHelperTool='normals'|'skeleton';
+
+function eachMaterial(material:Material|Material[],callback:(item:Material)=>void){
+  (Array.isArray(material)?material:[material]).forEach(callback);
+}
 
 export class CoreLabAdvancedHelpers{
   private normals:VertexNormalsHelper[]=[];
@@ -31,7 +35,7 @@ export class CoreLabAdvancedHelpers{
     this.normals.forEach(helper=>{
       helper.parent?.remove(helper);
       helper.geometry.dispose();
-      helper.material.dispose();
+      eachMaterial(helper.material,material=>material.dispose());
     });
     this.normals=[];
   }
@@ -59,7 +63,7 @@ export class CoreLabAdvancedHelpers{
     if(!this.skeleton)return;
     this.skeleton.parent?.remove(this.skeleton);
     this.skeleton.geometry.dispose();
-    this.skeleton.material.dispose();
+    eachMaterial(this.skeleton.material,material=>material.dispose());
     this.skeleton=null;
   }
 
@@ -72,10 +76,12 @@ export class CoreLabAdvancedHelpers{
     root.traverse(node=>{if((node as Object3D&{isBone?:boolean}).isBone)hasBones=true});
     if(!hasBones){this.log('Skeleton · NO BONES FOUND');return}
     const helper=new SkeletonHelper(root);
-    helper.material.depthTest=false;
-    helper.material.depthWrite=false;
-    helper.material.transparent=true;
-    helper.material.opacity=.82;
+    eachMaterial(helper.material,material=>{
+      material.depthTest=false;
+      material.depthWrite=false;
+      material.transparent=true;
+      material.opacity=.82;
+    });
     helper.frustumCulled=false;
     helper.renderOrder=950;
     this.skeleton=helper;
