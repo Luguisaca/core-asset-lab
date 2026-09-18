@@ -32,7 +32,7 @@ El proyecto incluye `package-lock.json` y el bootstrap de dependencias validado 
 
 No publiques en un Issue detalles explotables de vulnerabilidades, credenciales, material sensible de prueba ni modelos/datos confidenciales.
 
-Cuando **Private Vulnerability Reporting** esté habilitado en este repositorio público, ese será el canal preferido para reportes de seguridad mediante GitHub. Hasta entonces, inicia el contacto de forma privada mediante `contacto@luguisaca.com`. Los bugs ordinarios que no impliquen una vulnerabilidad de seguridad corresponden a GitHub Issues o `bugs@luguisaca.com`.
+**Private Vulnerability Reporting** está habilitado en este repositorio público y es el canal preferido para reportes de seguridad mediante GitHub. Si ese mecanismo no está disponible para la persona reportante, inicia el contacto de forma privada mediante `contacto@luguisaca.com`. Los bugs ordinarios que no impliquen una vulnerabilidad de seguridad corresponden a GitHub Issues o `bugs@luguisaca.com`.
 
 Incluye la versión o commit afectado, condiciones de reproducción, impacto y una prueba mínima cuando sea seguro compartirla. Evita enviar secretos o datos de terceros que no sean necesarios para investigar el reporte.
 
