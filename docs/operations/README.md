@@ -1,43 +1,40 @@
-# Core Asset Lab — Operations and Distribution
+# Core Asset Lab — Operaciones y distribución
 
-This is the canonical operational guide for installing, running, validating and packaging the current application. Distribution ideas are listed separately from supported paths so planned work is never presented as shipped functionality.
+Esta es la guía operativa canónica para instalar, ejecutar, validar y empaquetar la aplicación actual. Las ideas de distribución se separan de los canales soportados para que el trabajo planeado nunca se presente como funcionalidad ya publicada.
 
-## Supported path: source/local
+## Canal soportado: código fuente/local
 
-### Requirements
+### Requisitos
 
-- Git for repository cloning;
+- Git para clonar el repositorio;
 - Node.js `>=22.19.0`;
 - npm;
-- modern WebGL-capable browser.
+- navegador moderno compatible con WebGL.
 
-Node 22.19.0 is the automated CI baseline. Windows manual QA also passed with Node 24.19.0 and npm 11.7.0.
+Node 22.19.0 es la base automatizada de CI. El QA manual en Windows también pasó con Node 24.19.0 y npm 11.7.0.
 
-### Install and run
-
-While V1 remains on its validation branch:
+### Instalación y ejecución
 
 ```bash
 git clone https://github.com/Luguisaca/core-asset-lab.git
 cd core-asset-lab
-git switch core-asset-lab-v1
 npm ci
 npm run dev
 ```
 
-Astro prints the local development URL. Open it and load a `.glb` or `.gltf` file through the picker or drag/drop surface.
+Astro muestra la URL local de desarrollo. Ábrela y carga un archivo `.glb` o `.gltf` mediante el selector o arrastrándolo al área correspondiente.
 
-`npm ci` is the normal clean-clone path and installs the exact dependency graph committed in `package-lock.json`. Use `npm install` only when intentionally changing dependencies or regenerating/updating the lockfile, then review and validate that change before committing it.
+`npm ci` es el procedimiento normal para un clon limpio e instala exactamente el grafo de dependencias registrado en `package-lock.json`. Usa `npm install` únicamente cuando se cambien intencionalmente dependencias o se regenere/actualice el lockfile; revisa y valida ese cambio antes del commit.
 
-`npm run check` is not required merely to use the development server. It is a QA/development command that performs Astro/TypeScript checks.
+`npm run check` no es necesario simplemente para utilizar el servidor de desarrollo. Es un comando de QA/desarrollo que ejecuta comprobaciones Astro/TypeScript.
 
-The loader rejects unsupported filename extensions and selections above 100 MB. Selected model contents are processed in the browser under the current architecture.
+El cargador rechaza extensiones no soportadas y archivos superiores a 100 MB. Con la arquitectura actual, el contenido de los modelos seleccionados se procesa en el navegador.
 
-### GLTF companion-resource caveat
+### Consideración sobre recursos complementarios GLTF
 
-A `.glb` normally packages its resources into one binary asset. A `.gltf` may reference separate `.bin` files and textures. The current local picker creates an object URL for the selected file; therefore documentation must not claim universal support for every external-resource/multi-file GLTF layout until that workflow is explicitly tested and, if necessary, implemented.
+Un `.glb` normalmente empaqueta sus recursos en un único archivo binario. Un `.gltf` puede referenciar archivos `.bin` y texturas separados. El selector local actual crea una URL de objeto para el archivo seleccionado; por tanto, la documentación no debe afirmar soporte universal para todos los esquemas GLTF multiarchivo o con recursos externos hasta que ese flujo sea probado explícitamente y, si es necesario, implementado.
 
-## Validation and production-style local build
+## Validación y build local similar a producción
 
 ```bash
 npm ci
@@ -46,17 +43,17 @@ npm run build
 npm run preview
 ```
 
-`npm run build` runs `astro check` before `astro build` and produces the static `dist/` application. Running `check` separately is useful when collecting explicit validation evidence.
+`npm run build` ejecuta `astro check` antes de `astro build` y produce la aplicación estática en `dist/`. Ejecutar `check` por separado es útil para recopilar evidencia explícita de validación.
 
-The automated QA gate uses Node 22.19.0 and performs locked dependency installation with `npm ci`, Astro check, production build and an HTTP smoke test against the built `dist/` application. Run #18 (`35180417863`) validated this deterministic path successfully.
+El gate automatizado de QA utiliza Node 22.19.0 y realiza instalación bloqueada con `npm ci`, Astro check, build de producción y un smoke test HTTP sobre la aplicación `dist/`. El run #18 (`35180417863`) validó exitosamente este camino determinista.
 
-A release/checkpoint must record commands actually executed, environment, results and any manual functional/visual QA. Automated checks support but do not replace manual approval for material UI/3D behavior.
+Un release o checkpoint debe registrar comandos realmente ejecutados, entorno, resultados y cualquier QA funcional/visual manual. Las comprobaciones automatizadas apoyan, pero no reemplazan, la aprobación manual de cambios importantes de UI/3D.
 
-## Dependency reproducibility
+## Reproducibilidad de dependencias
 
-`package-lock.json` is committed and is the dependency source of truth for reproducible clean installations. CI and clean local validation use `npm ci`; this fails rather than silently rewriting the lockfile when `package.json` and the lockfile are inconsistent.
+`package-lock.json` está incluido y es la fuente de verdad para instalaciones limpias reproducibles. CI y la validación local limpia utilizan `npm ci`; este comando falla en lugar de reescribir silenciosamente el lockfile cuando `package.json` y el lockfile son inconsistentes.
 
-The validated V1 path is therefore:
+El camino V1 validado es:
 
 ```text
 package.json + package-lock.json
@@ -65,57 +62,57 @@ package.json + package-lock.json
         ↓
    astro check
         ↓
- production build
+ build de producción
         ↓
  HTTP smoke test
 ```
 
-Do not copy a lockfile from `luguisaca.com` or another project. Dependency updates must originate in this independent repository and be reviewed with the resulting lockfile diff.
+No copies un lockfile desde `luguisaca.com` ni desde otro proyecto. Las actualizaciones de dependencias deben originarse en este repositorio independiente y revisarse junto con el diff resultante del lockfile.
 
-## Static artifact
+## Artefacto estático
 
-Astro's `dist/` directory is the canonical production build artifact. It can be served by a static HTTP server; no application backend is required by the current runtime architecture.
+El directorio `dist/` de Astro es el artefacto canónico del build de producción. Puede servirse mediante un servidor HTTP estático; la arquitectura actual no requiere backend de aplicación.
 
-The static-build path is validated, but no official public Core Asset Lab hosting target has yet been released from this repository.
+El build estático está validado, pero todavía no se ha publicado desde este repositorio un destino oficial de hosting público para Core Asset Lab.
 
-## Official LUGUISACA demo — planned
+## Demo oficial de LUGUISACA — planeada
 
-The intended public convenience path is a demo hosted under `luguisaca.com` at a route still to be defined. That website will consume a validated Core Asset Lab distribution; the projects remain independently governed and developed.
+El canal público previsto es una demo alojada bajo `luguisaca.com` en una ruta aún por definir. El sitio consumirá una distribución validada de Core Asset Lab; ambos proyectos seguirán gobernados y desarrollados de forma independiente.
 
-Do not hard-code or document a placeholder route as canonical before it is selected, integrated and validated in the website project.
+No fijes ni documentes una ruta provisional como canónica antes de seleccionarla, integrarla y validarla en el proyecto web.
 
-## Docker/container — planned, not supported yet
+## Docker/contenedor — planeado, aún no soportado
 
-The intended container shape is a reproducible multi-stage build followed by a minimal static web server image. Containerization must not introduce an application backend merely for packaging.
+La forma prevista del contenedor es un build reproducible multietapa seguido de una imagen mínima de servidor web estático. La contenerización no debe introducir un backend de aplicación únicamente para empaquetar.
 
-Before advertising Docker support, validate the container definition, ignore rules, image build, runtime, static asset behavior and security/update model. Add Compose only if it improves actual usage.
+Antes de anunciar soporte Docker, valida la definición del contenedor, reglas de exclusión, construcción de imagen, runtime, comportamiento de recursos estáticos y modelo de seguridad/actualización. Añade Compose solo si mejora un uso real.
 
-## Desktop/downloadable application — planned, decision required
+## Aplicación de escritorio/descargable — planeada, requiere decisión
 
-A downloadable desktop application/installer is a desired user-friendly path, not current V1 functionality. A future ADR must evaluate a lightweight desktop wrapper and alternatives against package size, security boundary, update/signing model, WebGL/file access, build complexity and maintenance burden.
+Una aplicación o instalador de escritorio descargable es un canal amigable deseado, no funcionalidad V1 actual. Un ADR futuro deberá evaluar un wrapper de escritorio liviano y sus alternativas considerando tamaño del paquete, límite de seguridad, modelo de actualización/firma, WebGL/acceso a archivos, complejidad del build y mantenimiento.
 
-Do not add Electron, Tauri, Rust or another desktop dependency without an accepted ADR.
+No añadas Electron, Tauri, Rust ni otra dependencia de escritorio sin un ADR aceptado.
 
-## Versioned releases — planned
+## Releases versionados — planeados
 
-Future releases should identify a source commit/tag and may include validated static artifacts, desktop packages when implemented, checksums and release notes. Repository commits alone are not release evidence.
+Los releases futuros deben identificar un commit/tag de origen y podrán incluir artefactos estáticos validados, paquetes de escritorio cuando existan, checksums y notas de release. Los commits del repositorio por sí solos no constituyen evidencia de release.
 
-## Troubleshooting
+## Solución de problemas
 
-Diagnose the layer that actually failed:
+Diagnostica la capa que realmente falló:
 
-- clone/install and Node/npm compatibility;
-- lockfile/package manifest consistency;
-- Astro development server;
+- clonación/instalación y compatibilidad Node/npm;
+- consistencia entre lockfile y manifiesto del paquete;
+- servidor de desarrollo Astro;
 - Astro/TypeScript check;
-- production build;
-- static HTTP serving;
-- browser/WebGL runtime;
-- model-specific parsing/resources;
-- future hosting/container/desktop layers.
+- build de producción;
+- servicio HTTP estático;
+- runtime del navegador/WebGL;
+- parsing o recursos específicos del modelo;
+- futuras capas de hosting/contenedor/escritorio.
 
-Do not attribute one layer's state to another without evidence.
+No atribuyas el estado de una capa a otra sin evidencia.
 
-## Security and privacy
+## Seguridad y privacidad
 
-See `SECURITY.md`. Any server-side processing, uploads, authentication, persistence, telemetry collection or privileged desktop integration changes the current trust boundary and requires architecture/security review and an accepted decision before implementation.
+Consulta `SECURITY.md`. Cualquier procesamiento del lado del servidor, cargas, autenticación, persistencia, recolección de telemetría o integración de escritorio privilegiada cambia el límite de confianza actual y requiere revisión de arquitectura/seguridad y una decisión aceptada antes de implementarse.

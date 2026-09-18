@@ -1,38 +1,38 @@
-# Core Asset Lab — Extraction Record
+# Core Asset Lab — Registro de extracción
 
-This document is the historical record of the extraction that created the independent Core Asset Lab repository. It is not the canonical current-state document; see `CURRENT-STATE.md` for current status.
+Este documento conserva el registro histórico de la extracción que creó el repositorio independiente de Core Asset Lab. No es el documento canónico del estado actual; consulta `CURRENT-STATE.md` para conocer el estado vigente.
 
-## Origin
+## Origen
 
-Core Asset Lab originated inside `Luguisaca/luguisaca.com` as browser-based engineering tooling for loading, inspecting and calibrating GLB/GLTF assets used during development of the LUGUISACA Core/Hero.
+Core Asset Lab nació dentro de `Luguisaca/luguisaca.com` como herramienta de ingeniería ejecutada en el navegador para cargar, inspeccionar y calibrar recursos GLB/GLTF utilizados durante el desarrollo del Core/Hero de LUGUISACA.
 
-Sprint 01 is the formal product boundary recorded by ADR 0003 in the source repository. Post-boundary reusable viewer/inspection/calibration development was preserved in source branch `extract/core-asset-lab`.
+Sprint 01 es el límite formal del producto registrado por el ADR 0003 en el repositorio de origen. El desarrollo reutilizable posterior al límite —visor, inspección y calibración— se conservó en la rama `extract/core-asset-lab`.
 
-Migration source checkpoint:
+Checkpoint de origen de la migración:
 
-- repository: `Luguisaca/luguisaca.com`
-- branch: `extract/core-asset-lab`
+- repositorio: `Luguisaca/luguisaca.com`
+- rama: `extract/core-asset-lab`
 - commit: `feefc5573ebd646534dbe9ad2eb397a02724d914`
 - tree: `06b32dd5a0907cc73ecd3783db366370172ddbcd`
 
-The independent destination is `Luguisaca/core-asset-lab`, initially consolidated on branch `core-asset-lab-v1`.
+El destino independiente es `Luguisaca/core-asset-lab`, consolidado inicialmente en la rama `core-asset-lab-v1` y posteriormente promovido a `main`.
 
-## Boundary
+## Límite
 
-Included: browser-side model loading, Three.js viewer, inspector controls, animation playback, telemetry, diagnostics, presentation controls, responsive Lab UI and Lab-specific documentation.
+Incluido: carga de modelos en navegador, visor Three.js, controles de inspección, reproducción de animaciones, telemetría, diagnósticos, controles de presentación, UI responsive del Lab y documentación específica del Lab.
 
-Excluded: `luguisaca.com` landing/pages, professional content, LUGUISACA production Core/Hero assets, branding/personal assets, site-wide localization, Cloudflare website configuration and website QA.
+Excluido: landing/páginas de `luguisaca.com`, contenido profesional, recursos Core/Hero de producción de LUGUISACA, recursos de marca/personales, localización global del sitio, configuración Cloudflare y QA del sitio web.
 
-## Privacy model at extraction
+## Modelo de privacidad durante la extracción
 
-Selected GLB/GLTF files are read by the browser runtime. The extracted Lab has no application backend and does not intentionally upload selected model contents.
+Los archivos GLB/GLTF seleccionados son leídos por el runtime del navegador. El Lab extraído no tiene backend de aplicación y no carga intencionalmente el contenido de los modelos seleccionados.
 
-## Migration verification
+## Verificación de la migración
 
-The destination source tree was compared against the extraction source. One omitted `.gitignore` was restored from the exact source content; after restoration the migrated extraction files matched their source blobs. A static independence review found no functional dependency on the `luguisaca.com` application, its routes, branding assets or Cloudflare configuration.
+El árbol de origen del destino se comparó con la extracción fuente. Un `.gitignore` omitido se restauró usando exactamente el contenido de origen; después de restaurarlo, los archivos migrados coincidieron con sus blobs de origen. Una revisión estática de independencia no encontró dependencias funcionales de la aplicación `luguisaca.com`, sus rutas, recursos de marca ni configuración Cloudflare.
 
-These checks establish migration integrity and structural independence only. They do not substitute for clean installation, build/check evidence or standalone functional QA.
+Estas comprobaciones establecen integridad de migración e independencia estructural. No reemplazan instalación limpia, evidencia de build/check ni QA funcional independiente.
 
-## Historical note
+## Nota histórica
 
-The original staging instruction not to publish a standalone repository was superseded when the independent project boundary was accepted and this repository was created. Licensing remains a separate explicit decision and is not established by the extraction itself.
+La instrucción inicial de staging de no publicar un repositorio independiente quedó reemplazada cuando se aceptó el límite de proyecto independiente y se creó este repositorio. La licencia se decidió posteriormente de forma explícita y no se deriva de la extracción.

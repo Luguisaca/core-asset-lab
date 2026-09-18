@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Reportar un bug por correo
+    url: mailto:bugs@luguisaca.com
+    about: Canal alternativo para bugs ordinarios.
+  - name: Contacto general LUGUISACA
+    url: mailto:contacto@luguisaca.com
+    about: Consultas generales relacionadas con el proyecto.

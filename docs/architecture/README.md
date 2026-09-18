@@ -1,45 +1,45 @@
-# Architecture
+# Arquitectura
 
-## Purpose
+## Propósito
 
-Core Asset Lab is a browser-side workbench for inspecting, validating and calibrating GLB/GLTF assets. The current architecture intentionally keeps model processing on the client and keeps the application deployable as static files.
+Core Asset Lab es un banco de trabajo ejecutado en el navegador para inspeccionar, validar y calibrar recursos GLB/GLTF. La arquitectura actual mantiene intencionalmente el procesamiento de modelos en el cliente y permite desplegar la aplicación como archivos estáticos.
 
-## Current system
+## Sistema actual
 
-Astro provides the static application shell and build pipeline. TypeScript implements the Lab behavior. Three.js provides WebGL rendering, GLTF loading, camera/orbit interaction, animation, helpers and post-processing.
+Astro proporciona la estructura estática de la aplicación y el pipeline de build. TypeScript implementa el comportamiento del Lab. Three.js proporciona renderizado WebGL, carga GLTF, interacción de cámara/orbit, animación, helpers y postprocesamiento.
 
-The main page composes the Lab UI. Browser scripts coordinate local file selection/drop, scene state, rendering, inspection, diagnostics, controls, export/snapshot behavior and animation. Styles are split by shell, tools, workspace and responsive concerns.
+La página principal compone la UI del Lab. Los scripts del navegador coordinan selección/arrastre de archivos locales, estado de escena, renderizado, inspección, diagnósticos, controles, exportación/capturas y animación. Los estilos se separan según estructura, herramientas, workspace y comportamiento responsive.
 
-## Data flow
+## Flujo de datos
 
-1. The user selects or drops a `.glb` or `.gltf` file.
-2. Browser `File` APIs create a local object URL.
-3. Three.js `GLTFLoader` reads the asset in the browser.
-4. The loaded scene is inspected and rendered locally.
-5. UI controls mutate viewer/scene presentation state.
-6. Reports/configuration/snapshots are generated from client-side state.
+1. La persona usuaria selecciona o arrastra un archivo `.glb` o `.gltf`.
+2. Las APIs `File` del navegador crean una URL de objeto local.
+3. `GLTFLoader` de Three.js lee el recurso en el navegador.
+4. La escena cargada se inspecciona y renderiza localmente.
+5. Los controles de UI modifican el estado de presentación del visor/escena.
+6. Informes, configuración y capturas se generan desde el estado del cliente.
 
-The current application has no backend upload step in this flow.
+La aplicación actual no tiene un paso de carga a backend dentro de este flujo.
 
-## Boundaries
+## Límites
 
-The repository does not require LUGUISACA website pages, professional content, Core/Hero production assets, site-wide localization or Cloudflare configuration. It is not the canonical Lab for the production LUGUISACA Hero; that responsibility remains with `luguisaca.com`.
+El repositorio no requiere páginas del sitio LUGUISACA, contenido profesional, recursos Core/Hero de producción, localización global del sitio ni configuración Cloudflare. Tampoco es el Lab canónico del Hero de producción de LUGUISACA; esa responsabilidad permanece en `luguisaca.com`.
 
-## Distribution architecture
+## Arquitectura de distribución
 
-The canonical runtime artifact is currently Astro static output. This makes several future distribution methods possible without changing the core browser-side model: static hosting, a small web-server container, or a desktop shell around the built static application.
+El artefacto canónico de runtime es actualmente la salida estática de Astro. Esto permite varios métodos futuros de distribución sin cambiar el modelo principal del navegador: hosting estático, un contenedor con servidor web pequeño o un shell de escritorio alrededor de la aplicación estática compilada.
 
-Those possibilities are not current supported channels merely because the architecture permits them. Docker/container packaging and desktop packaging require their own accepted design decision, implementation and validation.
+Que la arquitectura lo permita no significa que esos canales estén soportados actualmente. Docker/contenedores y empaquetado de escritorio requieren su propia decisión aceptada, implementación y validación.
 
-## Architectural constraints
+## Restricciones arquitectónicas
 
-- Preserve static/browser-side operation unless an ADR explicitly changes it.
-- Avoid unnecessary backend or remote-processing dependencies.
-- Do not upload user models implicitly.
-- Preserve local-file privacy semantics in UI and documentation.
-- Keep dependencies minimal and review licensing/supply-chain impact before additions.
-- Material changes to hosting, remote data, desktop runtime, container distribution, authentication or persistence require an ADR.
+- Conservar la operación estática/en navegador salvo que un ADR la cambie explícitamente.
+- Evitar dependencias innecesarias de backend o procesamiento remoto.
+- No cargar modelos de las personas usuarias de forma implícita.
+- Conservar en UI y documentación la semántica de privacidad de archivos locales.
+- Mantener dependencias al mínimo y revisar impacto de licencia/cadena de suministro antes de añadirlas.
+- Cambios importantes de hosting, datos remotos, runtime de escritorio, distribución en contenedor, autenticación o persistencia requieren un ADR.
 
-## Validation boundary
+## Límite de validación
 
-Architecture documentation describes the intended and statically inspected system. Build/runtime support claims are tracked separately in `docs/CURRENT-STATE.md` and require observed evidence.
+La documentación de arquitectura describe el sistema previsto e inspeccionado estáticamente. Las afirmaciones sobre soporte de build/runtime se registran por separado en `docs/CURRENT-STATE.md` y requieren evidencia observada.

@@ -1,114 +1,121 @@
-# Core Asset Lab Agent Operating Rules
+# Reglas operativas para agentes — Core Asset Lab
 
-## Mission
+## Misión
 
-Core Asset Lab is an independent browser-side engineering tool for loading, inspecting, validating and calibrating GLB/GLTF assets before integration into web or 3D experiences.
+Core Asset Lab es una herramienta de ingeniería independiente, ejecutada en el navegador, para cargar, inspeccionar, validar y calibrar recursos GLB/GLTF antes de integrarlos en experiencias web o 3D.
 
-The project originated from the LUGUISACA Core/Hero engineering workflow, but its lifecycle, releases, architecture and future licensing decisions are maintained independently.
+El proyecto nació del flujo de ingeniería del Core/Hero de LUGUISACA, pero su ciclo de vida, releases, arquitectura y decisiones de licencia se gestionan de forma independiente.
 
-## Working principles
+## Principios de trabajo
 
-- Do not invent requirements or evidence.
-- Clearly separate facts, assumptions and recommendations.
-- Prefer minimal, reversible, traceable changes and avoid unnecessary complexity.
-- Read canonical documentation and accepted decisions before changing code or architecture.
-- Preserve repository history, project intent and approved V1 behavior unless a verified defect or explicit requirement requires change.
-- Use primary or official technical sources when external research is required.
-- Do not make architectural decisions implicitly.
-- Do not add dependencies without justification and license/security review.
-- Treat security, privacy, accessibility, performance, reliability, maintainability, testability and responsive/visual integrity as first-class concerns.
-- Keep browser-local asset processing as the default privacy boundary unless an accepted ADR changes it.
-- Do not introduce a backend, telemetry upload, authentication, persistent remote storage or third-party model processing implicitly.
+- No inventes requisitos ni evidencia.
+- Separa claramente hechos, supuestos y recomendaciones.
+- Prefiere cambios mínimos, reversibles y trazables; evita complejidad innecesaria.
+- Lee la documentación canónica y las decisiones aceptadas antes de cambiar código o arquitectura.
+- Conserva el historial, intención del proyecto y comportamiento V1 aprobado salvo que un defecto verificado o requisito explícito exija cambiarlo.
+- Usa fuentes técnicas primarias u oficiales cuando se requiera investigación externa.
+- No tomes decisiones arquitectónicas de forma implícita.
+- No añadas dependencias sin justificación y revisión de licencia/seguridad.
+- Trata seguridad, privacidad, accesibilidad, rendimiento, confiabilidad, mantenibilidad, capacidad de prueba e integridad responsive/visual como preocupaciones de primer nivel.
+- Mantén el procesamiento local en navegador como límite de privacidad predeterminado salvo que un ADR aceptado lo cambie.
+- No introduzcas implícitamente backend, carga de telemetría, autenticación, almacenamiento remoto persistente ni procesamiento de modelos por terceros.
 
-## Change control
+## Control de cambios
 
-- `main` is the consolidated project branch after an explicitly approved V1 promotion.
-- Use focused branches for implementation and architectural work.
-- Work only on requested scope; do not modify unrelated files.
-- Keep commits small and traceable.
-- Do not merge, release, publish or deploy unless explicitly authorized.
-- Before implementation, inspect repository state and accepted decisions.
-- After implementation, provide real validation evidence. Never declare PASS for checks that were not executed.
-- Manual visual/functional QA remains required for material UI/3D changes; automated checks are supporting evidence, not final visual approval.
-- Do not claim a release/deployment merely because repository state changed. Verify the relevant runtime/distribution channel when release status matters.
-- A promotion/release is not complete at merge time. Perform the documentation and validation closeout appropriate to the release.
+- `main` es la rama consolidada después de la promoción V1 aprobada explícitamente.
+- Usa ramas enfocadas para implementación y trabajo arquitectónico.
+- Trabaja únicamente sobre el alcance solicitado; no modifiques archivos no relacionados.
+- Mantén commits pequeños y trazables.
+- No hagas merge, release, publicación ni despliegue sin autorización explícita.
+- Antes de implementar, inspecciona el estado del repositorio y las decisiones aceptadas.
+- Después de implementar, presenta evidencia real de validación. Nunca declares PASS para comprobaciones no ejecutadas.
+- El QA visual/funcional manual sigue siendo obligatorio para cambios importantes de UI/3D; las comprobaciones automatizadas son evidencia de apoyo, no aprobación visual final.
+- No afirmes que hubo release/despliegue solo porque cambió el repositorio. Verifica el canal de runtime/distribución correspondiente.
+- Una promoción/release no termina en el merge: realiza el cierre documental y de validación apropiado.
 
-Before declaring a release checkpoint closed, audit at minimum `README.md`, `AGENTS.md`, `docs/CURRENT-STATE.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `LICENSE`, `SECURITY.md`, relevant `docs/operations/`, `docs/architecture/` and `docs/decisions/`. Update only surfaces whose canonical facts, procedures, decisions, legal/community boundaries or safeguards actually changed.
+Antes de declarar cerrado un checkpoint de release, audita como mínimo `README.md`, `AGENTS.md`, `docs/CURRENT-STATE.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `LICENSE`, `SECURITY.md`, `docs/operations/`, `docs/architecture/` y `docs/decisions/`. Actualiza únicamente las superficies cuyos hechos canónicos, procedimientos, decisiones, límites legales/comunitarios o salvaguardas realmente hayan cambiado.
 
-## V1 baseline
+## Base V1
 
-The migrated V1 baseline includes local GLB/GLTF loading, asset audit, performance information, wireframe, bounding box, axes, normals, skeleton, center/refit, snapshot PNG, asset validation, mesh/material inspection and visibility, scene/render/FX controls, GLTF animation controls, responsive behavior and ES/EN UI.
+La base V1 migrada incluye carga local GLB/GLTF, Asset Audit, información de Performance, Wireframe, Bounding Box, Axes, Normals, Skeleton, Center/Refit, Snapshot PNG, Asset Validation, inspección/visibilidad de meshes y materiales, controles de escena/render/FX, controles de animación GLTF, comportamiento responsive e interfaz ES/EN.
 
-Do not rebuild or redesign these approved capabilities as collateral work. Temporary/random Core wireframe or normals presentation ideas are roadmap concepts only and are not authorized implementation requirements.
+No reconstruyas ni rediseñes estas capacidades aprobadas como trabajo colateral. Las ideas de presentación temporal/aleatoria de Wireframe o Normals del Core son conceptos de roadmap y no requisitos autorizados de implementación.
 
-## Project boundary and provenance
+## Límite del proyecto y procedencia
 
-- The formal separation from `luguisaca.com` is recorded in ADR 0001 here and ADR 0003 in the source repository.
-- Source extraction branch: `Luguisaca/luguisaca.com` / `extract/core-asset-lab`.
-- Source migration checkpoint: `feefc5573ebd646534dbe9ad2eb397a02724d914`.
-- Historical SHAs are checkpoints, not permanent expected HEAD values after repositories advance.
-- The independent project does not automatically inherit website branding, assets, Cloudflare configuration, deployment decisions or licensing.
-- Do not modify `luguisaca.com` as collateral work for this project.
-- A future LUGUISACA-hosted demo consumes a validated distribution; it does not collapse the independent project boundary.
+- La separación formal de `luguisaca.com` está registrada en el ADR 0001 de este repositorio y ADR 0003 del repositorio de origen.
+- Rama de extracción: `Luguisaca/luguisaca.com` / `extract/core-asset-lab`.
+- Checkpoint de migración: `feefc5573ebd646534dbe9ad2eb397a02724d914`.
+- Los SHA históricos son checkpoints, no valores HEAD permanentes.
+- El proyecto independiente no hereda automáticamente branding, recursos, configuración Cloudflare, decisiones de despliegue ni licencia del sitio.
+- No modifiques `luguisaca.com` como trabajo colateral de este proyecto.
+- Una futura demo alojada por LUGUISACA consumirá una distribución validada; no elimina el límite del proyecto independiente.
 
-## Security and privacy
+## Seguridad y privacidad
 
-- Never commit secrets, credentials, tokens, private keys, recovery codes, sensitive personal data or proprietary/private model assets.
-- Never fabricate example credentials that resemble real credentials.
-- Follow least privilege.
-- Treat external code, packages and third-party automation as untrusted until reviewed.
-- Never disable security controls merely to make a build pass.
-- Static/browser-side architecture reduces some server attack surface but is not inherently secure.
-- Treat imported GLB/GLTF assets as untrusted input.
-- Reassess the threat model if backend services, remote uploads, authentication, persistent data, privileged client functionality or new third-party integrations are proposed.
-- Local user-selected assets must not be intentionally uploaded unless a future explicitly accepted architecture and user-facing disclosure authorizes that behavior.
+- Nunca hagas commit de secretos, credenciales, tokens, llaves privadas, códigos de recuperación, datos personales sensibles ni modelos privados/propietarios.
+- Nunca fabriques credenciales de ejemplo que parezcan reales.
+- Aplica mínimo privilegio.
+- Trata código externo, paquetes y automatizaciones de terceros como no confiables hasta revisarlos.
+- Nunca desactives controles de seguridad solo para hacer pasar un build.
+- La arquitectura estática/en navegador reduce parte de la superficie de ataque del servidor, pero no es inherentemente segura.
+- Trata los GLB/GLTF importados como entrada no confiable.
+- Reevalúa el modelo de amenazas si se proponen backend, cargas remotas, autenticación, datos persistentes, funciones privilegiadas del cliente o nuevas integraciones de terceros.
+- Los recursos locales seleccionados por la persona usuaria no deben cargarse intencionalmente a servicios remotos salvo que una arquitectura futura aceptada y una comunicación clara lo autoricen.
 
-## Dependencies
+## Dependencias
 
-Before adding a dependency:
+Antes de añadir una dependencia:
 
-- explain why it is required;
-- prefer maintained and reputable projects;
-- minimize dependency count;
-- check license compatibility;
-- consider direct and transitive supply-chain risk;
-- prefer platform/native capabilities when practical;
-- record material dependency/security implications when appropriate.
+- explica por qué es necesaria;
+- prefiere proyectos mantenidos y reputados;
+- minimiza la cantidad de dependencias;
+- verifica compatibilidad de licencia;
+- considera riesgo directo y transitivo de cadena de suministro;
+- prefiere capacidades nativas/de plataforma cuando sea práctico;
+- registra implicaciones materiales de dependencia/seguridad cuando corresponda.
 
-Do not copy dependency lockfiles from another project. Reproducibility claims require a lockfile generated and validated for this independent repository.
+No copies lockfiles desde otro proyecto. Las afirmaciones de reproducibilidad requieren un lockfile generado y validado para este repositorio independiente.
 
-## Documentation
+## Documentación
 
-Documentation must describe actual behavior and observed project state.
+La documentación debe describir comportamiento real y estado observado del proyecto.
 
-"Document the change" means perform an impact-based audit across canonical governance, current state, architecture, decisions, operations/distribution, security, contribution/community and legal/license surfaces. It does not mean creating a new Markdown file for every task.
+“Documentar el cambio” significa realizar una auditoría basada en impacto sobre gobierno, estado actual, arquitectura, decisiones, operaciones/distribución, seguridad, contribución/comunidad y superficies legales/licencia. No significa crear un archivo Markdown nuevo para cada tarea.
 
-Prefer one canonical source of truth over duplicated narrative. Update `docs/CURRENT-STATE.md` at meaningful consolidation/release checkpoints. Keep operating procedures in `docs/operations/`. Record material architecture, hosting, distribution, security, data-handling or integration decisions as ADRs before implementation.
+Prefiere una fuente canónica de verdad sobre narrativas duplicadas. Actualiza `docs/CURRENT-STATE.md` en checkpoints importantes de consolidación/release. Mantén procedimientos operativos en `docs/operations/`. Registra decisiones importantes de arquitectura, hosting, distribución, seguridad, manejo de datos o integración mediante ADR antes de implementarlas.
 
-Avoid claims of certification/compliance unless formally achieved. Use scoped language such as "validated", "tested on" or "aligned with" according to the evidence actually available.
+Evita afirmar certificación/compliance salvo que se haya logrado formalmente. Usa lenguaje acotado como “validado”, “probado en” o “alineado con” según la evidencia disponible.
 
-`LICENSE` is a deliberate project decision. Do not replace, broaden, reinterpret or automatically assign an open-source license without explicit authorization from Luis Salamanca.
+`LICENSE` es una decisión deliberada del proyecto. No reemplaces, amplíes, reinterpretes ni asignes automáticamente una licencia sin autorización explícita de Luis Salamanca.
 
-## Distribution
+## Distribución
 
-Current supported paths and planned paths must be clearly separated. A documented idea is not an implemented channel.
+Los canales soportados actualmente y los planeados deben separarse claramente. Una idea documentada no es un canal implementado.
 
-Potential user paths include source/local use, static/hosted browser use, containers and packaged desktop/release artifacts. Each channel must be designed, implemented and validated before documentation may call it supported. Do not invent a public demo route before the website integration defines and validates it.
+Los posibles canales incluyen uso local desde código fuente, uso estático/alojado en navegador, contenedores y artefactos empaquetados de escritorio/release. Cada canal debe diseñarse, implementarse y validarse antes de que la documentación pueda llamarlo soportado. No inventes una ruta de demo pública antes de que la integración web la defina y valide.
 
-## Languages
+## Idioma y localización
 
-Internal engineering documentation may primarily use English. The V1 application exposes ES/EN UI. Changes to localization must preserve semantic parity rather than maintaining conflicting duplicate behavior.
+El idioma canónico de trabajo y documentación de Core Asset Lab es **español de Colombia (es-CO)**. La documentación debe redactarse originalmente en un español colombiano claro, profesional y natural; no debe depender de traducciones automáticas desde el inglés.
 
-## Required completion report
+- El español (es-CO) es la fuente principal para documentación de gobierno, estado del proyecto, arquitectura, operaciones, seguridad, contribución y decisiones.
+- Cuando exista documentación pública en inglés, debe mantenerse como versión localizada con paridad semántica respecto de la versión canónica en español.
+- Los nombres propios, comandos, rutas, APIs, identificadores, formatos, nombres de tecnologías y términos técnicos cuya traducción reduzca precisión pueden conservarse en inglés.
+- No traducir literalmente terminología técnica cuando el uso habitual en Colombia o en la industria sea más claro en inglés.
+- La interfaz V1 mantiene ES/EN y los cambios de localización deben conservar paridad semántica, sin crear comportamientos contradictorios.
+- Los textos jurídicos oficiales de terceros, incluido `LICENSE`, deben conservarse intactos en su idioma oficial. Puede añadirse documentación explicativa en español, dejando claro que no sustituye ni modifica el texto jurídico aplicable.
 
-For implementation tasks report, where applicable:
+## Reporte de finalización requerido
 
-1. files changed;
-2. why they changed;
-3. validation actually performed;
-4. unresolved risks or assumptions;
-5. resulting commits;
-6. release/deployment status when relevant;
-7. documentation closeout and branch-cleanup status for release promotions.
+Para tareas de implementación reporta, cuando corresponda:
 
-Do not fabricate local `git diff`, `git status`, runtime, build or deployment evidence when the acting environment did not observe it. For connector/API-only work, report resulting files/commits instead.
+1. archivos modificados;
+2. por qué cambiaron;
+3. validación realmente realizada;
+4. riesgos o supuestos pendientes;
+5. commits resultantes;
+6. estado de release/despliegue cuando sea relevante;
+7. cierre documental y limpieza de ramas para promociones de release.
+
+No fabriques evidencia local de `git diff`, `git status`, runtime, build o despliegue cuando el entorno actuante no la haya observado. Para trabajo realizado únicamente mediante connector/API, reporta los archivos y commits resultantes.

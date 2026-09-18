@@ -1,108 +1,100 @@
-# Core Asset Lab — Current State
+# Core Asset Lab — Estado actual
 
-Last consolidated: 2026-09-17
+Última consolidación: 2026-09-18
 
-## Status
+## Estado
 
-Core Asset Lab is maintained independently in `Luguisaca/core-asset-lab`. The current pre-merge V1 baseline is branch `core-asset-lab-v1`; promotion to `main` remains intentionally blocked until the project owner explicitly approves the completed V1 gate.
+Core Asset Lab se mantiene de forma independiente en `Luguisaca/core-asset-lab`. V1 fue promovida a `main` mediante el PR #2 después de la aprobación del responsable del proyecto. El commit de merge es `744e0a301262576b7af2689b5a76c1e58db06a1c`. Posteriormente, un clon limpio de `main` en Windows superó instalación determinista, check, build, runtime de desarrollo y aceptación visual/funcional del responsable del proyecto. Después se eliminó la rama de migración `core-asset-lab-v1`.
 
-Migration integrity from the source extraction was verified by repository-tree/blob comparison. The only file omitted during the manual web upload was `.gitignore`; it was restored byte-for-byte from the source in commit `7251fb49d2d13164115daf2db5562f3f2390e467`.
+La integridad de la migración desde la extracción de origen fue verificada mediante comparación de árboles/blobs del repositorio. El único archivo omitido durante la carga manual por web fue `.gitignore`; se restauró byte por byte desde el origen en el commit `7251fb49d2d13164115daf2db5562f3f2390e467`.
 
-Static inspection found no functional dependency on `luguisaca.com`, its pages, branding assets, Cloudflare configuration or backend services.
+La inspección estática no encontró dependencia funcional de `luguisaca.com`, sus páginas, recursos de marca, configuración Cloudflare ni servicios backend.
 
-## Runtime architecture
+## Arquitectura de runtime
 
 - Astro 7.3.2
 - TypeScript 5.9.3
 - Three.js 0.186.0
-- Node.js >= 22.19.0 for current development/build tooling
-- Astro static output
-- browser-side GLB/GLTF processing
-- no application backend in the current architecture
+- Node.js >= 22.19.0 para las herramientas actuales de desarrollo/build
+- salida estática de Astro
+- procesamiento GLB/GLTF en navegador
+- sin backend de aplicación en la arquitectura actual
 
-The Node baseline was raised from 22.12.0 after the first independent CI bootstrap exposed current transitive package engine requirements above that version. Node 22.19.0 is the validated CI baseline; Node 24.19.0 is also directly exercised on Windows.
+La base de Node se elevó desde 22.12.0 después de que el primer bootstrap de CI independiente revelara requisitos de engine de paquetes transitivos superiores a esa versión. Node 22.19.0 es la base validada en CI; Node 24.19.0 también fue probado directamente en Windows.
 
-## V1 capabilities
+## Capacidades V1
 
-The V1 baseline includes local `.glb`/`.gltf` loading, Asset Audit and Performance information, Wireframe, Bounding Box, Axes, Copy Config, Export Report, Mesh/Material Inspector and visibility, Grid, real Normals, Skeleton helpers, Center/Refit, Snapshot PNG, Asset Validation, HIDE ALL/SHOW ALL, scene/render/FX controls, GLTF animation controls, responsive behavior and ES/EN UI.
+La base V1 incluye carga local `.glb`/`.gltf`, información Asset Audit y Performance, Wireframe, Bounding Box, Axes, Copy Config, Export Report, Mesh/Material Inspector y visibilidad, Grid, Normals reales, helpers Skeleton, Center/Refit, Snapshot PNG, Asset Validation, HIDE ALL/SHOW ALL, controles de escena/render/FX, controles de animación GLTF, comportamiento responsive e interfaz ES/EN.
 
-Historical pre-extraction QA exercised Fox, RiggedSimple and BrainStem. Post-migration manual acceptance confirms the independent application is visually and functionally behaving as expected in the owner's exercised workflow; this is not universal certification for every GLB/GLTF/browser/GPU combination.
+El QA histórico previo a la extracción probó Fox, RiggedSimple y BrainStem. La aceptación manual posterior a la migración confirma que la aplicación independiente se comporta visual y funcionalmente como se esperaba dentro del flujo probado por el responsable; esto no constituye certificación universal para todas las combinaciones GLB/GLTF/navegador/GPU.
 
-## Migration provenance
+## Procedencia de la migración
 
-- Source repository: `Luguisaca/luguisaca.com`
-- Source branch: `extract/core-asset-lab`
-- Source checkpoint: `feefc5573ebd646534dbe9ad2eb397a02724d914`
-- Formal product boundary: Sprint 01
+- Repositorio de origen: `Luguisaca/luguisaca.com`
+- Rama de origen: `extract/core-asset-lab`
+- Checkpoint de origen: `feefc5573ebd646534dbe9ad2eb397a02724d914`
+- Límite formal del producto: Sprint 01
 
-The source website retains its own Core/Hero validation Lab; post-boundary generalized viewer/inspection/calibration work belongs here.
+El sitio de origen conserva su propio Lab de validación Core/Hero; el desarrollo generalizado de visor/inspección/calibración posterior al límite corresponde a este repositorio.
 
-## Validation evidence
+## Evidencia de validación
 
-### Repository and architecture
+### Repositorio y arquitectura
 
-- Migration file integrity: **PASS** — tree/blob comparison against the extraction source.
-- Static independence audit: **PASS** — configuration/import/path inspection found no runtime dependency on `luguisaca.com`.
+- Integridad de archivos de migración: **PASS** — comparación de árboles/blobs frente al origen de extracción.
+- Auditoría estática de independencia: **PASS** — la inspección de configuración/imports/rutas no encontró dependencia de runtime con `luguisaca.com`.
 
-### Automated independent QA
+### QA automatizado independiente
 
-- Run #2 (`35177543306`): **PASS** — dependency installation, `npm run check` and production build after correcting a real TypeScript material-union issue.
-- Run #3 (`35177699229`): **PASS** — generated `dist/` served over HTTP and expected Core Asset Lab/file-input surface found.
-- Run #5 (`35179217936`): **PASS** — Node 22.19.0 supported baseline, dependency installation, check, build and smoke-test workflow completed successfully.
-- Run #18 (`35180417863`): **PASS** — committed lockfile, Node 22.19.0, deterministic `npm ci`, Astro check, production build and built-app HTTP smoke test all completed successfully on commit `43d70bdffd47d85900a4410b5749f71cd8ce3f7a`.
+- Run #2 (`35177543306`): **PASS** — instalación de dependencias, `npm run check` y build de producción después de corregir un problema real de unión de materiales en TypeScript.
+- Run #3 (`35177699229`): **PASS** — `dist/` generado servido mediante HTTP y superficie esperada de Core Asset Lab/entrada de archivos encontrada.
+- Run #5 (`35179217936`): **PASS** — base Node 22.19.0, instalación, check, build y smoke test completados correctamente.
+- Run #18 (`35180417863`): **PASS** — lockfile incluido, Node 22.19.0, `npm ci` determinista, Astro check, build de producción y smoke test HTTP de la aplicación compilada completados correctamente sobre el commit `43d70bdffd47d85900a4410b5749f71cd8ce3f7a`.
 
-The repository now commits `package-lock.json` (lockfileVersion 3). CI uses `npm ci --no-audit --no-fund`, so the V1 dependency bootstrap is lockfile-reproducible rather than an unlocked `npm install` bootstrap.
+El repositorio incluye `package-lock.json` (lockfileVersion 3). CI utiliza `npm ci --no-audit --no-fund`, por lo que el bootstrap de dependencias V1 es reproducible mediante lockfile en lugar de depender de un `npm install` sin bloqueo.
 
-### Independent manual Windows QA
+### QA manual independiente en Windows
 
-Observed environment:
+Entorno observado:
 
 - Windows 11
 - Node.js 24.19.0
 - npm 11.7.0
-- independent `core-asset-lab` clone/worktree
+- clon/worktree independiente de `core-asset-lab`
 
-Observed result:
+Resultado observado:
 
-- deterministic `npm ci`: **PASS** with 0 reported vulnerabilities;
-- `npm run check`: **PASS** with 0 errors, 0 warnings and 4 non-blocking hints;
-- `npm run build`: **PASS** with static `dist/` output;
-- development server: **PASS**;
-- visual behavior: **PASS** by project-owner acceptance;
-- exercised V1 functionality: **PASS** by project-owner acceptance.
+- `npm ci` determinista: **PASS**, con 0 vulnerabilidades reportadas;
+- `npm run check`: **PASS**, con 0 errores, 0 warnings y 4 hints no bloqueantes;
+- `npm run build`: **PASS**, con salida estática en `dist/`;
+- servidor de desarrollo: **PASS**;
+- comportamiento visual: **PASS**, aprobado por el responsable del proyecto;
+- funcionalidad V1 probada: **PASS**, aprobada por el responsable del proyecto.
 
-The remaining hints include Three.js `Clock` deprecation notices and an unused `modelScale`; the production build also reports a non-blocking large-chunk advisory. These remain tracked technical debt rather than being silently refactored during V1 closure.
+Los hints restantes incluyen avisos de deprecación de `Clock` de Three.js y un `modelScale` sin usar; el build de producción también reporta una advertencia no bloqueante por chunk grande. Estos puntos permanecen como deuda técnica registrada y no se refactorizaron silenciosamente durante el cierre de V1.
 
-## Distribution status
+## Estado de distribución
 
-- Source/local Node + npm workflow: **VALIDATED**.
-- Lockfile-reproducible `npm ci` workflow: **VALIDATED**.
-- Static Astro build: **VALIDATED**.
-- Official hosted LUGUISACA demo: **NOT IMPLEMENTED**; route remains intentionally undefined.
-- Docker distribution: **NOT IMPLEMENTED**.
-- Packaged desktop executable: **NOT IMPLEMENTED**.
-- Versioned downloadable release artifacts: **NOT IMPLEMENTED**.
+- Flujo local desde código fuente con Node + npm: **VALIDADO**.
+- Flujo reproducible mediante `npm ci`: **VALIDADO**.
+- Build estático Astro: **VALIDADO**.
+- Demo oficial alojada por LUGUISACA: **NO IMPLEMENTADA**; la ruta permanece intencionalmente sin definir.
+- Distribución Docker: **NO IMPLEMENTADA**.
+- Ejecutable de escritorio empaquetado: **NO IMPLEMENTADO**.
+- Artefactos descargables versionados: **NO IMPLEMENTADOS**.
 
-Planned channels must not be described as supported until implemented and validated.
+Los canales planeados no deben describirse como soportados hasta que sean implementados y validados.
 
-## Licensing
+## Licencia
 
-The existing `LICENSE` file is intentionally unchanged. The long-term independent-project usage/license model remains a deliberate pending decision and must not be inferred from the source website, repository visibility or planned distribution channels.
+El responsable del proyecto aprobó **PolyForm Noncommercial License 1.0.0** como licencia del proyecto independiente el 2026-09-18. El proyecto es source-available bajo esos términos no comerciales; el acceso al repositorio no concede derechos adicionales a los definidos en `LICENSE`. Los permisos comerciales, si existen, requieren una licencia separada del licenciante.
 
-## Pull-request state
+Core Asset Lab es dirigido y revisado por personas y utiliza herramientas basadas en IA como apoyo para desarrollo, investigación y documentación. Este proceso no garantiza software libre de defectos. Los reportes comunitarios utilizan las funciones de colaboración/seguridad de GitHub a medida que se habiliten, `bugs@luguisaca.com` para bugs ordinarios y `contacto@luguisaca.com` para contacto general.
 
-PR #1 (`core-asset-lab-v1` → `main`, title `Add files via upload`) was closed without merge on 2026-09-17 and points to an earlier branch checkpoint. It is historical migration trace, not the V1 promotion vehicle.
+El idioma canónico de trabajo y documentación es **español de Colombia (`es-CO`)**. Las localizaciones en inglés deben conservar paridad semántica con la documentación canónica. El texto jurídico oficial de `LICENSE` se conserva intacto en su idioma oficial.
 
-When V1 promotion is authorized, use a fresh PR/review from the then-current validated `core-asset-lab-v1` HEAD to `main`; do not rely on PR #1 as evidence of the final diff.
+## Estado de Pull Requests y cierre V1
 
-## V1 merge gate
+El PR #1 (`core-asset-lab-v1` → `main`, título `Add files via upload`) fue cerrado sin merge el 2026-09-17 y permanece como rastro histórico de migración. El PR #2 (`Core Asset Lab V1 — independent baseline`) fue revisado y aprobado explícitamente por el responsable del proyecto y luego integrado a `main` el 2026-09-17 mediante el commit de merge `744e0a301262576b7af2689b5a76c1e58db06a1c`.
 
-Completed evidence: migration integrity, static independence, Node 22.19 CI baseline, deterministic lockfile bootstrap/check/build/smoke QA, independent Windows runtime QA and canonical documentation consolidation.
-
-Still required before `core-asset-lab-v1` is promoted to `main`:
-
-1. confirm the documentation-only closure commit preserves a green branch-head CI;
-2. create/review the final promotion PR from the validated branch HEAD;
-3. obtain explicit project-owner approval for merge.
-
-No merge, release, public demo deployment or source-repository cleanup is implied by this document.
+La migración y promoción de V1 están **CERRADAS**. La validación desde clon limpio de `main` pasó y la rama independiente de migración fue eliminada. El empaquetado de releases, despliegue de demo pública y limpieza de ramas históricas en el repositorio separado `luguisaca.com` permanecen como trabajo futuro independiente.

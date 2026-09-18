@@ -1,43 +1,43 @@
-# Security
+# Seguridad
 
-## Current security model
+## Modelo de seguridad actual
 
-Core Asset Lab is currently a static, browser-side application with no application backend. User-selected GLB/GLTF files are read by the browser runtime. The current model-loading flow does not intentionally upload selected model contents.
+Core Asset Lab es actualmente una aplicación estática que se ejecuta en el navegador y no tiene backend de aplicación. Los archivos GLB/GLTF seleccionados por la persona usuaria son leídos por el runtime del navegador. El flujo actual de carga de modelos no envía intencionalmente el contenido de los modelos seleccionados.
 
-This architecture reduces some server-side exposure but is not a claim that the application is inherently secure. Imported assets are untrusted input and third-party packages are part of the supply-chain boundary.
+Esta arquitectura reduce parte de la exposición del lado del servidor, pero no significa que la aplicación sea inherentemente segura. Los recursos importados se consideran entradas no confiables y los paquetes de terceros forman parte del límite de la cadena de suministro.
 
-## Sensitive information
+## Información sensible
 
-Never commit credentials, access tokens, private keys, recovery codes, proprietary model files, sensitive personal information or production secrets. The current application does not require runtime secrets.
+Nunca hagas commit de credenciales, tokens de acceso, llaves privadas, códigos de recuperación, archivos de modelos propietarios, información personal sensible ni secretos de producción. La aplicación actual no requiere secretos en runtime.
 
-## Model/input boundary
+## Límite de modelos y entradas
 
-Treat every imported model as untrusted. Do not weaken browser security controls to load a model. The current UI accepts `.glb`/`.gltf` selections up to 100 MB; extension and size checks are usability/safety guards, not a complete malicious-file defense.
+Trata cada modelo importado como entrada no confiable. No debilites los controles de seguridad del navegador para cargar un modelo. La UI actual acepta selecciones `.glb`/`.gltf` de hasta 100 MB; las verificaciones de extensión y tamaño son medidas de usabilidad/seguridad, no una defensa completa frente a archivos maliciosos.
 
-A `.gltf` can reference external buffers/textures. The current selected-file object-URL flow must not be described as universal multi-file GLTF support unless that resource model is explicitly implemented and validated.
+Un `.gltf` puede referenciar buffers o texturas externas. El flujo actual basado en una URL de objeto para el archivo seleccionado no debe describirse como soporte universal para GLTF multiarchivo hasta que ese modelo de recursos sea implementado y validado explícitamente.
 
-## Privacy boundary
+## Límite de privacidad
 
-Under the current architecture, model inspection occurs in the browser and there is no application backend upload step. Do not add remote model processing, telemetry collection, persistent storage or third-party uploads without explicit architecture/security review and user-facing disclosure.
+Con la arquitectura actual, la inspección del modelo ocurre en el navegador y no existe un paso de carga hacia un backend de la aplicación. No añadas procesamiento remoto de modelos, recolección de telemetría, almacenamiento persistente ni cargas a terceros sin revisión explícita de arquitectura/seguridad y comunicación clara a la persona usuaria.
 
-## Dependencies and build chain
+## Dependencias y cadena de build
 
-Astro, Three.js and development dependencies are supply-chain dependencies. Dependency changes require justification, maintenance/security review and license compatibility review.
+Astro, Three.js y las dependencias de desarrollo forman parte de la cadena de suministro. Los cambios de dependencias requieren justificación, revisión de mantenimiento/seguridad y compatibilidad de licencia.
 
-Independent CI has validated installation, static/type checks, production build and built-app smoke serving. This evidence does not replace dependency vulnerability review or guarantee the absence of security defects.
+El CI independiente ha validado instalación, comprobaciones estáticas/de tipos, build de producción y smoke test de la aplicación compilada. Esta evidencia no reemplaza una revisión de vulnerabilidades de dependencias ni garantiza ausencia de defectos de seguridad.
 
-The project currently lacks a committed `package-lock.json`; dependency bootstrap therefore is not yet lockfile-deterministic. Reproducible dependency installation remains a release-hardening task.
+El proyecto incluye `package-lock.json` y el bootstrap de dependencias validado utiliza `npm ci` de forma determinista. Esto mejora la reproducibilidad, pero no elimina el riesgo de cadena de suministro.
 
-## Reporting a vulnerability
+## Reportar una vulnerabilidad
 
-Do not publish exploitable vulnerability details, credentials or sensitive proof material in a public issue. Until a dedicated private vulnerability-reporting mechanism is configured for this repository, contact the maintainers privately through an established LUGUISACA contact channel and provide the affected version/commit, reproduction conditions, impact and a minimal proof where safe.
+No publiques en un Issue detalles explotables de vulnerabilidades, credenciales, material sensible de prueba ni modelos/datos confidenciales. Utiliza Private Vulnerability Reporting / Security Advisories de GitHub cuando ese mecanismo del repositorio esté habilitado. Mientras se establece formalmente un correo dedicado a seguridad, el contacto privado puede iniciarse mediante `contacto@luguisaca.com`; los bugs ordinarios corresponden a GitHub Issues o `bugs@luguisaca.com`.
 
-A dedicated repository reporting mechanism should be configured before a formal public release.
+Incluye la versión o commit afectado, condiciones de reproducción, impacto y una prueba mínima cuando sea seguro compartirla. Antes de un release público formal deberá configurarse un mecanismo privado dedicado para reportes de seguridad.
 
-## Architecture changes requiring security review
+## Cambios de arquitectura que requieren revisión de seguridad
 
-Adding a backend, authentication, persistent storage, remote model processing, third-party uploads, analytics/telemetry collection, desktop privileges or privileged integrations changes the current trust boundary and requires an ADR/threat-model review before implementation.
+Añadir backend, autenticación, almacenamiento persistente, procesamiento remoto de modelos, cargas a terceros, analítica/telemetría, privilegios de escritorio o integraciones privilegiadas modifica el límite de confianza actual y requiere un ADR y revisión del modelo de amenazas antes de implementarse.
 
-## Current validation boundary
+## Límite de la validación actual
 
-Migration integrity, static independence, automated build/smoke QA and independent Windows functional/visual acceptance have been completed for the V1 workflow described in `docs/CURRENT-STATE.md`. This is scoped QA evidence, not a security certification and not universal model/browser compatibility evidence.
+La integridad de migración, independencia estática, QA automatizado de build/smoke y aceptación funcional/visual independiente en Windows se completaron para el flujo V1 descrito en `docs/CURRENT-STATE.md`. Esta es evidencia de QA acotada, no una certificación de seguridad ni evidencia de compatibilidad universal de modelos o navegadores.
