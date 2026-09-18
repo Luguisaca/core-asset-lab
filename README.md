@@ -93,7 +93,7 @@ Core Asset Lab es un proyecto de LUGUISACA **en desarrollo activo, dirigido y re
 
 La revisión humana no significa que el software esté libre de errores. El proyecto puede contener bugs, código imperfecto o comportamientos inesperados. Los reportes reproducibles ayudan a investigarlos y corregirlos.
 
-Para reportar bugs puedes utilizar **GitHub Issues**, cuando esté habilitado, o escribir a `bugs@luguisaca.com`. También utilizaremos las herramientas de GitHub que correspondan —Issues, Discussions y Pull Requests— para reportes reproducibles, propuestas, conversación comunitaria y contribuciones.
+Para reportar bugs utiliza **GitHub Issues** o escribe a `bugs@luguisaca.com`. GitHub Issues y Pull Requests son los canales principales para reportes reproducibles, propuestas y contribuciones. Discussions podrá utilizarse para conversación comunitaria cuando esa función del repositorio esté habilitada.
 
 Para comunicación general con LUGUISACA: `contacto@luguisaca.com`.
 
