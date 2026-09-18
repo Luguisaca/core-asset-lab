@@ -1,6 +1,6 @@
 # ADR 0002 — GitHub Pages como canal público estático de Core Asset Lab
 
-- Estado: Propuesto
+- Estado: Aceptado
 - Fecha: 2026-09-18
 
 ## Contexto
@@ -9,7 +9,7 @@ Core Asset Lab V1 ya produce un artefacto estático `dist/` validado mediante el
 
 El proyecto necesita un canal de acceso directo para personas y agentes automatizados sin introducir backend, autenticación, telemetría, almacenamiento remoto ni procesamiento de modelos por terceros. El límite de privacidad vigente exige que los modelos seleccionados continúen procesándose localmente en el navegador.
 
-## Decisión propuesta
+## Decisión
 
 Usar GitHub Pages como canal público estático del repositorio independiente, mediante GitHub Actions y el artefacto `dist/`.
 

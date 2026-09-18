@@ -16,10 +16,10 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22.19.0'
           cache: 'npm'
@@ -36,7 +36,7 @@ jobs:
       - name: Smoke test built app
         shell: bash
         run: |
-          npx --yes serve dist -l 4173 > /tmp/core-asset-lab-serve.log 2>&1 &
+          python3 -m http.server 4173 --directory dist > /tmp/core-asset-lab-serve.log 2>&1 &
           SERVER_PID=$!
           trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
 
