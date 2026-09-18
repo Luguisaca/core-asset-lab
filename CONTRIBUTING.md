@@ -1,62 +1,64 @@
-# Contributing to Core Asset Lab
+# Contribuir a Core Asset Lab
 
-Thank you for helping improve Core Asset Lab.
+Gracias por ayudar a mejorar Core Asset Lab.
 
-## Before changing code
+## Antes de cambiar código
 
-Read `AGENTS.md`, `docs/CURRENT-STATE.md`, `docs/architecture/README.md` and applicable ADRs. Preserve approved V1 behavior unless the change fixes a verified defect or implements an explicitly accepted requirement.
+Lee `AGENTS.md`, `docs/CURRENT-STATE.md`, `docs/architecture/README.md` y los ADR aplicables. Conserva el comportamiento V1 aprobado, salvo que el cambio corrija un defecto verificado o implemente un requisito aceptado explícitamente.
 
-## Development environment
+## Entorno de desarrollo
 
-Requires Node.js `>=22.19.0`, npm and a modern WebGL-capable browser.
+Requiere Node.js `>=22.19.0`, npm y un navegador moderno compatible con WebGL.
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Before proposing a code change, run:
+Antes de proponer un cambio de código, ejecuta:
 
 ```bash
 npm run check
 npm run build
 ```
 
-Record actual validation evidence and limitations. Never report PASS for checks that were not executed. Material UI/3D changes also require manual visual/functional QA; CI is supporting evidence rather than visual approval.
+Registra la evidencia real de validación y sus limitaciones. Nunca reportes PASS para comprobaciones que no se ejecutaron. Los cambios importantes de UI/3D también requieren QA visual y funcional manual; CI es evidencia de apoyo, no aprobación visual.
 
-## Change workflow
+## Flujo de cambios
 
-Use a focused branch, keep commits small and traceable, and avoid unrelated refactors. Do not merge, release, publish or deploy without the required review and explicit authorization.
+Usa una rama enfocada, mantén commits pequeños y trazables y evita refactors no relacionados. No hagas merge, release, publicación ni despliegue sin la revisión requerida y autorización explícita.
 
-New dependencies require justification, maintenance/security consideration and license compatibility review. Material architecture, hosting, security, data, integration or packaging decisions require an ADR before implementation.
+Las dependencias nuevas requieren justificación, revisión de mantenimiento/seguridad y compatibilidad de licencia. Las decisiones importantes de arquitectura, hosting, seguridad, datos, integración o empaquetado requieren un ADR antes de implementarse.
 
-## Pull requests
+## Pull Requests
 
-A PR should state:
+Un PR debe indicar:
 
-- what changed and why;
-- validation actually performed and environment where relevant;
-- known limitations, risks or technical debt;
-- documentation impact;
-- architecture/security/privacy implications;
-- release/deployment impact.
+- qué cambió y por qué;
+- validación realmente ejecutada y entorno, cuando corresponda;
+- limitaciones conocidas, riesgos o deuda técnica;
+- impacto documental;
+- implicaciones de arquitectura, seguridad y privacidad;
+- impacto sobre release o despliegue.
 
-Do not treat a green build as sufficient evidence for 3D behavior that was not exercised.
+No consideres un build verde como evidencia suficiente de comportamiento 3D que no haya sido probado.
 
-## Documentation
+## Documentación
 
-Documentation is part of the change. Audit affected canonical surfaces instead of creating duplicate Markdown narratives. `docs/CURRENT-STATE.md` is the canonical evidence/status checkpoint; operations, architecture, security and ADRs own their respective concerns.
+La documentación forma parte del cambio. Audita las fuentes canónicas afectadas en lugar de crear narrativas Markdown duplicadas. `docs/CURRENT-STATE.md` es el punto canónico de evidencia y estado; operaciones, arquitectura, seguridad y ADR conservan sus responsabilidades respectivas.
 
-## Community and reporting
+El idioma canónico del proyecto es español de Colombia (`es-CO`), según `AGENTS.md`. Las versiones en inglés son localizaciones y deben conservar paridad semántica con la documentación canónica en español.
 
-Use GitHub's collaboration features as they are enabled: Issues for reproducible bugs and feature proposals, Discussions for questions/ideas, and Pull Requests for contributions. Bugs may also be reported to `bugs@luguisaca.com`; general LUGUISACA contact is `contacto@luguisaca.com`.
+## Comunidad y reportes
 
-A useful bug report includes the affected version/commit, environment, model characteristics where safe to disclose, reproduction steps, expected behavior and observed behavior. Do not attach confidential, proprietary, personal or otherwise sensitive files/data to public reports.
+Usa las funciones de colaboración de GitHub a medida que estén habilitadas: Issues para bugs reproducibles y propuestas de funcionalidades, Discussions para preguntas e ideas y Pull Requests para contribuciones. Los bugs también pueden reportarse a `bugs@luguisaca.com`; el contacto general de LUGUISACA es `contacto@luguisaca.com`.
 
-## Security
+Un reporte útil de bug incluye la versión o commit afectado, entorno, características del modelo cuando sea seguro compartirlas, pasos de reproducción, comportamiento esperado y comportamiento observado. No adjuntes archivos ni datos confidenciales, propietarios, personales o sensibles en reportes públicos.
 
-Do not include secrets, private/proprietary models, sensitive personal data or exploitable vulnerability details in commits or public issues. Follow `SECURITY.md` for vulnerability handling and use GitHub private vulnerability reporting / Security Advisories when that mechanism is enabled.
+## Seguridad
 
-## Licensing
+No incluyas secretos, modelos privados/propietarios, datos personales sensibles ni detalles explotables de vulnerabilidades en commits o Issues públicos. Sigue `SECURITY.md` para el manejo de vulnerabilidades y utiliza Private Vulnerability Reporting / Security Advisories de GitHub cuando ese mecanismo esté habilitado.
 
-Contributions and use of the project are governed by the repository `LICENSE` (PolyForm Noncommercial License 1.0.0). Do not infer additional permissions from repository access/visibility. Licensing changes require explicit authorization from Luis Salamanca.
+## Licencia
+
+Las contribuciones y el uso del proyecto se rigen por el archivo `LICENSE` del repositorio (PolyForm Noncommercial License 1.0.0). No infieras permisos adicionales por el acceso o visibilidad del repositorio. Los cambios de licencia requieren autorización explícita de Luis Salamanca.
