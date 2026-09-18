@@ -1,13 +1,13 @@
-# Architecture Decision Records
+# Registros de Decisiones de Arquitectura (ADR)
 
-This directory contains accepted or proposed decisions that materially affect Core Asset Lab architecture, security/privacy boundaries, distribution, data handling, integrations or operations.
+Este directorio contiene decisiones aceptadas o propuestas que afectan de manera importante la arquitectura de Core Asset Lab, límites de seguridad/privacidad, distribución, manejo de datos, integraciones u operaciones.
 
-## Decisions
+## Decisiones
 
-- [0001 — Independent Core Asset Lab foundation](./0001-independent-project-foundation.md) — Accepted, 2026-09-16.
+- [0001 — Fundación independiente de Core Asset Lab](./0001-independent-project-foundation.md) — Aceptada, 2026-09-16.
 
-## Policy
+## Política
 
-Create a new ADR before implementing a material architectural decision. Do not rewrite an accepted ADR to make history appear different; supersede it with a later decision when necessary.
+Crea un ADR nuevo antes de implementar una decisión arquitectónica importante. No reescribas un ADR aceptado para hacer que la historia parezca diferente; cuando sea necesario, reemplázalo mediante una decisión posterior que lo declare superseded.
 
-Implementation details and transient task notes do not require an ADR. Current observed project status belongs in `docs/CURRENT-STATE.md`.
+Los detalles de implementación y notas temporales de tareas no requieren un ADR. El estado observado actual del proyecto corresponde a `docs/CURRENT-STATE.md`.
