@@ -5,7 +5,7 @@ Este directorio contiene decisiones aceptadas o propuestas que afectan de manera
 ## Decisiones
 
 - [0001 — Fundación independiente de Core Asset Lab](./0001-independent-project-foundation.md) — Aceptada, 2026-09-16.
-- [0002 — GitHub Pages como canal público estático de Core Asset Lab](./0002-github-pages-public-distribution.md) — Propuesto, 2026-09-18.
+- [0002 — GitHub Pages como canal público estático de Core Asset Lab](./0002-github-pages-public-distribution.md) — Aceptada, 2026-09-18.
 
 ## Política
 
