@@ -1,5 +1,7 @@
 # Core Asset Lab
 
+**Idioma / Language:** Español · [English](README.en.md)
+
 Browser-side laboratory for loading, inspecting, validating, calibrating and presenting local GLB/GLTF assets.
 
 Core Asset Lab is an independent project maintained by **LUGUISACA / Luis Salamanca**. It originated as engineering tooling for the LUGUISACA Core/Hero and became a separate reusable project at the Sprint 01 boundary. The independent V1 was extracted from `Luguisaca/luguisaca.com` branch `extract/core-asset-lab`, source commit `feefc5573ebd646534dbe9ad2eb397a02724d914`.
