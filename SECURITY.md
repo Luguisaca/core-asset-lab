@@ -26,13 +26,13 @@ Astro, Three.js and development dependencies are supply-chain dependencies. Depe
 
 Independent CI has validated installation, static/type checks, production build and built-app smoke serving. This evidence does not replace dependency vulnerability review or guarantee the absence of security defects.
 
-The project currently lacks a committed `package-lock.json`; dependency bootstrap therefore is not yet lockfile-deterministic. Reproducible dependency installation remains a release-hardening task.
+The project commits `package-lock.json` and the validated dependency bootstrap uses deterministic `npm ci`. This improves reproducibility but does not eliminate supply-chain risk.
 
 ## Reporting a vulnerability
 
-Do not publish exploitable vulnerability details, credentials or sensitive proof material in a public issue. Until a dedicated private vulnerability-reporting mechanism is configured for this repository, contact the maintainers privately through an established LUGUISACA contact channel and provide the affected version/commit, reproduction conditions, impact and a minimal proof where safe.
+Do not publish exploitable vulnerability details, credentials, sensitive proof material or confidential models/data in a public issue. Use GitHub private vulnerability reporting / Security Advisories when that repository mechanism is enabled. Until a dedicated security email is formally established, private security contact may be initiated through `contacto@luguisaca.com`; ordinary software bugs belong in GitHub Issues or `bugs@luguisaca.com`.
 
-A dedicated repository reporting mechanism should be configured before a formal public release.
+Include the affected version/commit, reproduction conditions, impact and a minimal proof where safe. A dedicated private repository reporting mechanism should be configured before a formal public release.
 
 ## Architecture changes requiring security review
 
