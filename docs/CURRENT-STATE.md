@@ -89,7 +89,7 @@ Los canales planeados no deben describirse como soportados hasta que sean implem
 
 El responsable del proyecto aprobó **PolyForm Noncommercial License 1.0.0** como licencia del proyecto independiente el 2026-09-18. El proyecto es source-available bajo esos términos no comerciales; el acceso al repositorio no concede derechos adicionales a los definidos en `LICENSE`. Los permisos comerciales, si existen, requieren una licencia separada del licenciante.
 
-Core Asset Lab es dirigido y revisado por personas y utiliza herramientas basadas en IA como apoyo para desarrollo, investigación y documentación. Este proceso no garantiza software libre de defectos. Los reportes comunitarios utilizan las funciones de colaboración/seguridad de GitHub a medida que se habiliten, `bugs@luguisaca.com` para bugs ordinarios y `contacto@luguisaca.com` para contacto general.
+Core Asset Lab es dirigido y revisado por personas y utiliza herramientas basadas en IA como apoyo para desarrollo, investigación y documentación. Este proceso no garantiza software libre de defectos. GitHub Discussions y Private Vulnerability Reporting están habilitados en el repositorio público. Los bugs ordinarios pueden reportarse mediante GitHub Issues o `bugs@luguisaca.com`; las vulnerabilidades deben utilizar el canal privado definido en `SECURITY.md`, y `contacto@luguisaca.com` permanece como contacto general.
 
 El idioma canónico de trabajo y documentación es **español de Colombia (`es-CO`)**. Las localizaciones en inglés deben conservar paridad semántica con la documentación canónica. El texto jurídico oficial de `LICENSE` se conserva intacto en su idioma oficial.
 
