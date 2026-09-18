@@ -1,10 +1,10 @@
 # Core Asset Lab — Current State
 
-Last consolidated: 2026-09-17
+Last consolidated: 2026-09-18
 
 ## Status
 
-Core Asset Lab is maintained independently in `Luguisaca/core-asset-lab`. The current pre-merge V1 baseline is branch `core-asset-lab-v1`; promotion to `main` remains intentionally blocked until the project owner explicitly approves the completed V1 gate.
+Core Asset Lab is maintained independently in `Luguisaca/core-asset-lab`. V1 was promoted to `main` through PR #2 after project-owner approval. The merge commit is `744e0a301262576b7af2689b5a76c1e58db06a1c`. A fresh Windows clone of `main` subsequently passed deterministic install, check, build, development runtime and project-owner visual/functional acceptance. The migration branch `core-asset-lab-v1` was then deleted.
 
 Migration integrity from the source extraction was verified by repository-tree/blob comparison. The only file omitted during the manual web upload was `.gitignore`; it was restored byte-for-byte from the source in commit `7251fb49d2d13164115daf2db5562f3f2390e467`.
 
@@ -87,22 +87,12 @@ Planned channels must not be described as supported until implemented and valida
 
 ## Licensing
 
-The existing `LICENSE` file is intentionally unchanged. The long-term independent-project usage/license model remains a deliberate pending decision and must not be inferred from the source website, repository visibility or planned distribution channels.
+The project owner approved **PolyForm Noncommercial License 1.0.0** as the independent-project license on 2026-09-18. The project is source-available under those noncommercial terms; repository access does not grant rights beyond `LICENSE`. Commercial permissions, if any, require a separate license from the licensor.
 
-## Pull-request state
+Core Asset Lab is human-directed and human-reviewed while using AI-enabled tools as development/research/documentation assistance. This process does not guarantee defect-free software. Community reporting uses GitHub collaboration/security features as enabled, `bugs@luguisaca.com` for ordinary bugs and `contacto@luguisaca.com` for general contact.
 
-PR #1 (`core-asset-lab-v1` → `main`, title `Add files via upload`) was closed without merge on 2026-09-17 and points to an earlier branch checkpoint. It is historical migration trace, not the V1 promotion vehicle.
+## Pull-request and V1 closure state
 
-When V1 promotion is authorized, use a fresh PR/review from the then-current validated `core-asset-lab-v1` HEAD to `main`; do not rely on PR #1 as evidence of the final diff.
+PR #1 (`core-asset-lab-v1` → `main`, title `Add files via upload`) was closed without merge on 2026-09-17 and remains historical migration trace. PR #2 (`Core Asset Lab V1 — independent baseline`) was reviewed and explicitly approved by the project owner, then merged to `main` on 2026-09-17 with merge commit `744e0a301262576b7af2689b5a76c1e58db06a1c`.
 
-## V1 merge gate
-
-Completed evidence: migration integrity, static independence, Node 22.19 CI baseline, deterministic lockfile bootstrap/check/build/smoke QA, independent Windows runtime QA and canonical documentation consolidation.
-
-Still required before `core-asset-lab-v1` is promoted to `main`:
-
-1. confirm the documentation-only closure commit preserves a green branch-head CI;
-2. create/review the final promotion PR from the validated branch HEAD;
-3. obtain explicit project-owner approval for merge.
-
-No merge, release, public demo deployment or source-repository cleanup is implied by this document.
+V1 migration and promotion are **CLOSED**. Fresh-clone validation of `main` passed and the independent migration branch was removed. Release packaging, public demo deployment and cleanup of historical branches in the separate `luguisaca.com` source repository remain separate future work.
