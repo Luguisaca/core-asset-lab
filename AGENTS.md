@@ -95,9 +95,16 @@ Current supported paths and planned paths must be clearly separated. A documente
 
 Potential user paths include source/local use, static/hosted browser use, containers and packaged desktop/release artifacts. Each channel must be designed, implemented and validated before documentation may call it supported. Do not invent a public demo route before the website integration defines and validates it.
 
-## Languages
+## Idioma y localización
 
-Internal engineering documentation may primarily use English. The V1 application exposes ES/EN UI. Changes to localization must preserve semantic parity rather than maintaining conflicting duplicate behavior.
+El idioma canónico de trabajo y documentación de Core Asset Lab es **español de Colombia (es-CO)**. La documentación debe redactarse originalmente en un español colombiano claro, profesional y natural; no debe depender de traducciones automáticas desde el inglés.
+
+- El español (es-CO) es la fuente principal para documentación de gobierno, estado del proyecto, arquitectura, operaciones, seguridad, contribución y decisiones.
+- Cuando exista documentación pública en inglés, debe mantenerse como versión localizada con paridad semántica respecto de la versión canónica en español.
+- Los nombres propios, comandos, rutas, APIs, identificadores, formatos, nombres de tecnologías y términos técnicos cuya traducción reduzca precisión pueden conservarse en inglés.
+- No traducir literalmente terminología técnica cuando el uso habitual en Colombia o en la industria sea más claro en inglés.
+- La interfaz V1 mantiene ES/EN y los cambios de localización deben conservar paridad semántica, sin crear comportamientos contradictorios.
+- Los textos jurídicos oficiales de terceros, incluido `LICENSE`, deben conservarse intactos en su idioma oficial. Puede añadirse documentación explicativa en español, dejando claro que no sustituye ni modifica el texto jurídico aplicable.
 
 ## Required completion report
 
