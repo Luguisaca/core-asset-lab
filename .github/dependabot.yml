@@ -8,8 +8,10 @@ updates:
       time: "09:00"
       timezone: America/Bogota
     open-pull-requests-limit: 5
-    labels:
-      - dependencies
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - version-update:semver-major
     groups:
       npm-production:
         dependency-type: production
@@ -24,5 +26,7 @@ updates:
       time: "09:15"
       timezone: America/Bogota
     open-pull-requests-limit: 3
-    labels:
-      - dependencies
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - version-update:semver-major
