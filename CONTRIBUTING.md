@@ -11,7 +11,7 @@ Read `AGENTS.md`, `docs/CURRENT-STATE.md`, `docs/architecture/README.md` and app
 Requires Node.js `>=22.19.0`, npm and a modern WebGL-capable browser.
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
@@ -47,10 +47,16 @@ Do not treat a green build as sufficient evidence for 3D behavior that was not e
 
 Documentation is part of the change. Audit affected canonical surfaces instead of creating duplicate Markdown narratives. `docs/CURRENT-STATE.md` is the canonical evidence/status checkpoint; operations, architecture, security and ADRs own their respective concerns.
 
+## Community and reporting
+
+Use GitHub's collaboration features as they are enabled: Issues for reproducible bugs and feature proposals, Discussions for questions/ideas, and Pull Requests for contributions. Bugs may also be reported to `bugs@luguisaca.com`; general LUGUISACA contact is `contacto@luguisaca.com`.
+
+A useful bug report includes the affected version/commit, environment, model characteristics where safe to disclose, reproduction steps, expected behavior and observed behavior. Do not attach confidential, proprietary, personal or otherwise sensitive files/data to public reports.
+
 ## Security
 
-Do not include secrets, private/proprietary models, sensitive personal data or exploitable vulnerability details in commits or public issues. Follow `SECURITY.md` for vulnerability handling.
+Do not include secrets, private/proprietary models, sensitive personal data or exploitable vulnerability details in commits or public issues. Follow `SECURITY.md` for vulnerability handling and use GitHub private vulnerability reporting / Security Advisories when that mechanism is enabled.
 
 ## Licensing
 
-The current `LICENSE` is intentionally unchanged. Do not infer permissions from repository access/visibility, and do not modify licensing terms as collateral work. Any licensing change requires explicit authorization from Luis Salamanca.
+Contributions and use of the project are governed by the repository `LICENSE` (PolyForm Noncommercial License 1.0.0). Do not infer additional permissions from repository access/visibility. Licensing changes require explicit authorization from Luis Salamanca.
