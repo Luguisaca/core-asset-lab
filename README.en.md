@@ -89,7 +89,7 @@ This repository does not contain the `luguisaca.com` landing site, professional 
 
 Core Asset Lab is an actively developed LUGUISACA project. Its direction and review are human-led, while AI-enabled tools may assist development, research, documentation and related engineering work. Human review does not guarantee defect-free software: the project may contain bugs, imperfect code or unexpected behavior. Please report reproducible problems so they can be investigated.
 
-For bugs, use GitHub Issues when available or email `bugs@luguisaca.com`. GitHub is also the preferred collaboration surface for reproducible bug reports, feature proposals, discussions and pull requests as those repository features are enabled. General contact with LUGUISACA is available at `contacto@luguisaca.com`. Security vulnerabilities must follow `SECURITY.md` and should not be disclosed in a public issue.
+For bugs, use GitHub Issues or email `bugs@luguisaca.com`. GitHub Issues and Pull Requests are the primary collaboration surfaces for reproducible bug reports, feature proposals and contributions. Discussions may be used for community conversation when that repository feature is enabled. General contact with LUGUISACA is available at `contacto@luguisaca.com`. Security vulnerabilities must follow `SECURITY.md` and should not be disclosed in a public issue.
 
 When reporting publicly, do not attach confidential, proprietary, personal or otherwise sensitive models/data.
 

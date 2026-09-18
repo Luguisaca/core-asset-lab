@@ -51,7 +51,7 @@ El idioma canónico del proyecto es español de Colombia (`es-CO`), según `AGEN
 
 ## Comunidad y reportes
 
-Usa las funciones de colaboración de GitHub a medida que estén habilitadas: Issues para bugs reproducibles y propuestas de funcionalidades, Discussions para preguntas e ideas y Pull Requests para contribuciones. Los bugs también pueden reportarse a `bugs@luguisaca.com`; el contacto general de LUGUISACA es `contacto@luguisaca.com`.
+Usa GitHub Issues para bugs reproducibles y propuestas de funcionalidades, y Pull Requests para contribuciones. Cuando Discussions esté habilitado, úsalo para preguntas, ideas abiertas y conversación comunitaria. Los bugs también pueden reportarse a `bugs@luguisaca.com`; el contacto general de LUGUISACA es `contacto@luguisaca.com`.
 
 Un reporte útil de bug incluye la versión o commit afectado, entorno, características del modelo cuando sea seguro compartirlas, pasos de reproducción, comportamiento esperado y comportamiento observado. No adjuntes archivos ni datos confidenciales, propietarios, personales o sensibles en reportes públicos.
 
