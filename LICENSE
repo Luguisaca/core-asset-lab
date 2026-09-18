@@ -2,7 +2,6 @@ PolyForm Noncommercial License 1.0.0
 
 https://polyformproject.org/licenses/noncommercial/1.0.0
 
-Copyright Luis Salamanca / LUGUISACA 2026
 
 Acceptance
 
@@ -15,16 +14,17 @@ Copyright License
 The licensor grants you a copyright license for the software to
 do everything you might do with the software that would otherwise
 infringe the licensor's copyright in it for any permitted purpose.
-However, you may only distribute the software according to
-Distribution License and you may only make changes or new works
-based on the software according to Changes and New Works License.
+However, you may only distribute the software according to [Distribution
+License](#distribution-license) and make changes or new works
+based on the software according to [Changes and New Works
+License](#changes-and-new-works-license).
 
 Distribution License
 
 The licensor grants you an additional copyright license to
 distribute copies of the software. Your license to distribute
-covers distributing the software with changes and new works
-permitted by Changes and New Works License.
+covers distributing the software with changes and new works permitted by [Changes and New Works
+License](#changes-and-new-works-license).
 
 Notices
 
@@ -105,24 +105,24 @@ the software, under any kind of legal claim.***
 
 Definitions
 
-The licensor is the individual or entity offering these terms, and
-the software is the software the licensor makes available under
-these terms.
+The **licensor** is the individual or entity offering these
+terms, and the **software** is the software the licensor makes
+available under these terms.
 
-You refers to the individual or entity agreeing to these terms.
+**You** refers to the individual or entity agreeing to these terms.
 
-Your company is any legal entity, sole proprietorship, or other
-kind of organization that you work for, plus all organizations
-that have control over, are under the control of, or are under
-common control with that organization. Control means ownership of
-substantially all the assets of an entity, or the power to direct
-its management and policies by vote, contract, or otherwise.
-Control can be direct or indirect.
+**Your company** is any legal entity, sole proprietorship,
+or other kind of organization that you work for, plus all
+organizations that have control over, are under the control of,
+or are under common control with that organization.  **Control**
+means ownership of substantially all the assets of an entity,
+or the power to direct its management and policies by vote,
+contract, or otherwise.  Control can be direct or indirect.
 
-Your licenses are all the licenses granted to you for the software
-under these terms.
+**Your licenses** are all the licenses granted to you for the
+software under these terms.
 
-Use means anything you do with the software requiring one of your
-licenses.
+**Use** means anything you do with the software requiring one
+of your licenses.
 
 Trademark means trademarks, service marks, and similar rights.
