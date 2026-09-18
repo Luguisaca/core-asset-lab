@@ -4,28 +4,26 @@
 
 Laboratorio ejecutado en el navegador para cargar, inspeccionar, validar, calibrar y presentar recursos GLB/GLTF locales.
 
-> La documentación canónica del proyecto se redacta en español de Colombia (es-CO).
+Core Asset Lab es un proyecto independiente mantenido por **LUGUISACA / Luis Salamanca**. Nació como una herramienta de ingeniería para el Core/Hero de LUGUISACA y, desde el límite definido en Sprint 01, pasó a ser un proyecto reutilizable e independiente.
 
-Core Asset Lab is an independent project maintained by **LUGUISACA / Luis Salamanca**. It originated as engineering tooling for the LUGUISACA Core/Hero and became a separate reusable project at the Sprint 01 boundary. The independent V1 was extracted from `Luguisaca/luguisaca.com` branch `extract/core-asset-lab`, source commit `feefc5573ebd646534dbe9ad2eb397a02724d914`.
+## Qué ofrece V1
 
-## What V1 provides
+La V1 actual incluye carga local de GLB/GLTF mediante selección o arrastrar y soltar, renderizado Three.js y controles orbitales, ajuste automático y telemetría, controles de modelo/escena/renderizado/FX, Wireframe, Bounding Box, Axes, Normals y Skeleton, inspección y visibilidad de meshes/materiales, reproducción de animaciones GLTF embebidas, validación del recurso, captura PNG, exportación de configuración e informe, consola de diagnóstico, interfaz ES/EN y diseño adaptable.
 
-The current V1 includes local GLB/GLTF loading and drag/drop, Three.js rendering and orbit controls, auto-fit and telemetry, model/scene/render/FX controls, wireframe, bounding box, axes, normals and skeleton helpers, mesh/material inspection and visibility, embedded GLTF animation playback, asset validation, snapshot PNG, configuration/report export, diagnostic console, ES/EN UI and responsive layouts.
+Los modelos seleccionados son procesados por el navegador. La arquitectura actual no tiene backend y el flujo de carga no envía intencionalmente el contenido de los modelos seleccionados a un servidor.
 
-Selected model files are processed by the browser runtime. The application has no backend in the current architecture and the model-loading flow does not intentionally upload selected model contents.
+## Requisitos
 
-## Requirements
+Para ejecutar actualmente el proyecto desde el código fuente:
 
-For the current source/local distribution path:
-
-- Git, when cloning the repository;
+- Git, si se clona el repositorio;
 - Node.js `>=22.19.0`;
 - npm;
-- a modern browser with WebGL support.
+- un navegador moderno compatible con WebGL.
 
-The application currently accepts `.glb` and `.gltf` selections up to 100 MB. A standalone `.gltf` may reference companion buffers/textures; support for every multi-file GLTF layout must not be assumed without model-specific validation.
+La aplicación acepta actualmente archivos `.glb` y `.gltf` de hasta 100 MB. Un archivo `.gltf` puede depender de buffers o texturas adicionales; no debe asumirse compatibilidad universal con todas las estructuras GLTF multiarchivo sin validarlas específicamente.
 
-## Run locally
+## Ejecutar localmente
 
 ```bash
 git clone https://github.com/Luguisaca/core-asset-lab.git
@@ -34,11 +32,11 @@ npm ci
 npm run dev
 ```
 
-Open the local URL printed by Astro and select or drag a model into the Lab.
+Abre la URL local que muestra Astro y selecciona o arrastra un modelo al Lab.
 
-`npm ci` installs the dependency set recorded by the project lockfile. `npm run check` is a development/QA command, not a requirement for simply opening the Lab.
+`npm ci` instala exactamente el conjunto de dependencias registrado en el lockfile del proyecto. `npm run check` es un comando de desarrollo/QA y no es necesario simplemente para abrir el Lab.
 
-For explicit validation and a production-style local build:
+Para validación explícita y una compilación local similar a producción:
 
 ```bash
 npm run check
@@ -46,53 +44,67 @@ npm run build
 npm run preview
 ```
 
-The generated `dist/` application is static and browser-side.
+La aplicación generada en `dist/` es estática y se ejecuta en el navegador.
 
-## Validation status
+## Estado de validación
 
-The independent V1 has passed migration tree/blob integrity review and static independence review. GitHub Actions has also demonstrated clean dependency bootstrap, Astro/TypeScript checking, production build and an HTTP smoke test of the generated application. Independent manual Windows QA was performed on 2026-09-16/17 with Node.js 24.19.0 and npm 11.7.0; installation, checks, development runtime, visual behavior and the exercised V1 functionality were accepted by the project owner.
+La V1 independiente superó la revisión de integridad de la migración y la revisión de independencia estática. GitHub Actions también validó instalación determinista de dependencias, comprobaciones Astro/TypeScript, compilación de producción y una prueba HTTP básica de la aplicación generada.
 
-This does **not** mean every possible GLB/GLTF asset, browser, GPU or operating system has been certified. See `docs/CURRENT-STATE.md` for the canonical evidence and remaining gates.
+Además, se realizó QA manual independiente en Windows durante el 16/17-sep-2026 con Node.js 24.19.0 y npm 11.7.0. La instalación, comprobaciones, ejecución de desarrollo, comportamiento visual y funcionalidad V1 ejercitada fueron aceptadas por el responsable del proyecto.
 
-## Distribution status
+Esto **no significa** que todos los posibles archivos GLB/GLTF, navegadores, GPU o sistemas operativos estén certificados. La evidencia técnica canónica está en `docs/CURRENT-STATE.md`.
 
-Supported now:
+## Estado de distribución
 
-- source/local execution with Node.js + npm;
-- static production build generated by Astro.
+Actualmente validado:
 
-Planned but **not yet supported/released**:
+- ejecución local desde código fuente con Node.js + npm;
+- compilación estática de producción generada por Astro.
 
-- official hosted LUGUISACA demo at a route still to be defined;
-- Docker/container distribution;
-- downloadable desktop application/installer;
-- versioned downloadable release artifacts/checksums.
+Planeado pero **todavía no publicado ni soportado oficialmente**:
 
-These paths require implementation and QA before being advertised as available.
+- demo oficial alojada por LUGUISACA en una ruta aún por definir;
+- distribución mediante Docker/contenedor;
+- aplicación o instalador de escritorio descargable;
+- artefactos descargables versionados y checksums.
 
-## Project documentation
+Estos canales deberán implementarse y superar QA antes de anunciarse como disponibles.
 
-- `AGENTS.md` — operating/governance rules for human and automated contributors.
-- `docs/CURRENT-STATE.md` — canonical current status and QA evidence.
-- `docs/architecture/README.md` — runtime architecture and trust boundaries.
-- `docs/operations/README.md` — installation, validation, build and distribution operations.
-- `docs/decisions/` — accepted architectural/project decisions.
-- `docs/EXTRACTION.md` — historical extraction/provenance record.
-- `SECURITY.md` — security posture and vulnerability reporting guidance.
-- `CONTRIBUTING.md` — contribution workflow.
+## Documentación del proyecto
 
-## Scope boundary
+- `AGENTS.md` — reglas operativas y de gobierno para colaboradores humanos y automatizados.
+- `docs/CURRENT-STATE.md` — estado canónico y evidencia de QA.
+- `docs/architecture/README.md` — arquitectura de ejecución y límites de confianza.
+- `docs/operations/README.md` — instalación, validación, compilación y operaciones de distribución.
+- `docs/decisions/` — decisiones arquitectónicas y del proyecto aceptadas.
+- `docs/EXTRACTION.md` — historial de extracción y procedencia.
+- `SECURITY.md` — postura de seguridad y guía para reportar vulnerabilidades.
+- `CONTRIBUTING.md` — flujo de contribución.
 
-This repository does not contain the `luguisaca.com` landing site, professional content, LUGUISACA production Core/Hero assets, personal/brand assets, Cloudflare website configuration or website-specific QA. The website may later consume a validated distribution of Core Asset Lab as a public demo, but that does not merge the two project lifecycles.
+## Límite del proyecto
 
-## Development transparency and community
+Este repositorio no contiene la landing de `luguisaca.com`, contenido profesional, recursos Core/Hero de producción de LUGUISACA, recursos personales/de marca, configuración Cloudflare del sitio ni QA específico del sitio web.
 
-Core Asset Lab is an actively developed LUGUISACA project. Its direction and review are human-led, while AI-enabled tools may assist development, research, documentation and related engineering work. Human review does not guarantee defect-free software: the project may contain bugs, imperfect code or unexpected behavior. Please report reproducible problems so they can be investigated.
+En el futuro, el sitio web podrá consumir una distribución validada de Core Asset Lab como demo pública, pero eso no vuelve a unir los ciclos de vida de ambos proyectos.
 
-For bugs, use GitHub Issues when available or email `bugs@luguisaca.com`. GitHub is also the preferred collaboration surface for reproducible bug reports, feature proposals, discussions and pull requests as those repository features are enabled. General contact with LUGUISACA is available at `contacto@luguisaca.com`. Security vulnerabilities must follow `SECURITY.md` and should not be disclosed in a public issue.
+## Transparencia de desarrollo y comunidad
 
-When reporting publicly, do not attach confidential, proprietary, personal or otherwise sensitive models/data.
+Core Asset Lab es un proyecto de LUGUISACA **en desarrollo activo, dirigido y revisado por personas**. Herramientas y capacidades basadas en inteligencia artificial pueden utilizarse como apoyo durante el desarrollo, investigación, documentación y otras tareas de ingeniería.
 
-## License
+La revisión humana no significa que el software esté libre de errores. El proyecto puede contener bugs, código imperfecto o comportamientos inesperados. Los reportes reproducibles ayudan a investigarlos y corregirlos.
 
-Core Asset Lab is licensed under the **PolyForm Noncommercial License 1.0.0**. See `LICENSE` for the controlling terms. This is a source-available, noncommercial licensing model; repository access does not grant rights beyond those terms. Commercial permissions, if any, require a separate license from the licensor.
+Para reportar bugs puedes utilizar **GitHub Issues**, cuando esté habilitado, o escribir a `bugs@luguisaca.com`. También utilizaremos las herramientas de GitHub que correspondan —Issues, Discussions y Pull Requests— para reportes reproducibles, propuestas, conversación comunitaria y contribuciones.
+
+Para comunicación general con LUGUISACA: `contacto@luguisaca.com`.
+
+Las vulnerabilidades de seguridad **no deben publicarse en un Issue público**. Deben seguirse las instrucciones de `SECURITY.md` y utilizar los mecanismos privados de seguridad de GitHub cuando estén habilitados.
+
+No adjuntes públicamente modelos, archivos, información personal, propietaria, confidencial o sensible.
+
+## Licencia
+
+Core Asset Lab está disponible bajo la **PolyForm Noncommercial License 1.0.0**. El texto jurídicamente aplicable se encuentra en `LICENSE`.
+
+Es una licencia source-available para usos no comerciales. El acceso al repositorio no concede derechos adicionales a los establecidos por la licencia. Cualquier permiso comercial, si se concede, requiere una licencia independiente otorgada por el licenciante.
+
+> **Nota sobre idioma:** el archivo `LICENSE` conserva el texto oficial de PolyForm Noncommercial License 1.0.0 en inglés. Esta documentación en español sirve para facilitar la comprensión del proyecto y **no sustituye, modifica ni traduce jurídicamente** los términos de la licencia.
