@@ -26,14 +26,13 @@ The application currently accepts `.glb` and `.gltf` selections up to 100 MB. A 
 ```bash
 git clone https://github.com/Luguisaca/core-asset-lab.git
 cd core-asset-lab
-git switch core-asset-lab-v1
-npm install
+npm ci
 npm run dev
 ```
 
 Open the local URL printed by Astro and select or drag a model into the Lab.
 
-`npm install` resolves and installs the dependencies declared by the project. `npm run check` is a development/QA command, not a requirement for simply opening the Lab.
+`npm ci` installs the dependency set recorded by the project lockfile. `npm run check` is a development/QA command, not a requirement for simply opening the Lab.
 
 For explicit validation and a production-style local build:
 
@@ -44,8 +43,6 @@ npm run preview
 ```
 
 The generated `dist/` application is static and browser-side.
-
-> The `git switch core-asset-lab-v1` step is required only while V1 remains under pre-merge validation. After an explicitly approved merge, canonical branch instructions must be updated rather than left stale.
 
 ## Validation status
 
@@ -84,6 +81,14 @@ These paths require implementation and QA before being advertised as available.
 
 This repository does not contain the `luguisaca.com` landing site, professional content, LUGUISACA production Core/Hero assets, personal/brand assets, Cloudflare website configuration or website-specific QA. The website may later consume a validated distribution of Core Asset Lab as a public demo, but that does not merge the two project lifecycles.
 
+## Development transparency and community
+
+Core Asset Lab is an actively developed LUGUISACA project. Its direction and review are human-led, while AI-enabled tools may assist development, research, documentation and related engineering work. Human review does not guarantee defect-free software: the project may contain bugs, imperfect code or unexpected behavior. Please report reproducible problems so they can be investigated.
+
+For bugs, use GitHub Issues when available or email `bugs@luguisaca.com`. GitHub is also the preferred collaboration surface for reproducible bug reports, feature proposals, discussions and pull requests as those repository features are enabled. General contact with LUGUISACA is available at `contacto@luguisaca.com`. Security vulnerabilities must follow `SECURITY.md` and should not be disclosed in a public issue.
+
+When reporting publicly, do not attach confidential, proprietary, personal or otherwise sensitive models/data.
+
 ## License
 
-The repository contains its current `LICENSE` file unchanged from the extraction. The independent-project licensing model has not been re-decided. Repository access or visibility must not be interpreted as granting permissions beyond the terms actually present in `LICENSE`.
+Core Asset Lab is licensed under the **PolyForm Noncommercial License 1.0.0**. See `LICENSE` for the controlling terms. This is a source-available, noncommercial licensing model; repository access does not grant rights beyond those terms. Commercial permissions, if any, require a separate license from the licensor.
