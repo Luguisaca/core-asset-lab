@@ -3,7 +3,7 @@ name: QA
 on:
   push:
     branches:
-      - core-asset-lab-v1
+      - main
   pull_request:
   workflow_dispatch:
 
