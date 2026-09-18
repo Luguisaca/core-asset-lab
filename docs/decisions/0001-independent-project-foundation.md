@@ -1,37 +1,37 @@
-# ADR 0001 — Independent Core Asset Lab foundation
+# ADR 0001 — Fundación independiente de Core Asset Lab
 
-- Status: Accepted
-- Date: 2026-09-16
+- Estado: Aceptada
+- Fecha: 2026-09-16
 
-## Context
+## Contexto
 
-Core Asset Lab originated inside `luguisaca.com` while developing and validating the LUGUISACA Core/Hero GLB/GLTF experience. During Sprint 01 the Lab demonstrated a broader purpose as a reusable browser-side viewer, inspection and calibration workbench.
+Core Asset Lab nació dentro de `luguisaca.com` durante el desarrollo y validación de la experiencia GLB/GLTF del Core/Hero de LUGUISACA. Durante Sprint 01, el Lab demostró un propósito más amplio como visor reutilizable, herramienta de inspección y banco de calibración ejecutado en el navegador.
 
-The source repository accepted ADR 0003 to separate the website-specific Core Lab from the generalized project. Development was preserved on `extract/core-asset-lab` and subsequently copied into the independent `Luguisaca/core-asset-lab` repository.
+El repositorio de origen aceptó el ADR 0003 para separar el Core Lab específico del sitio web del proyecto generalizado. El desarrollo se conservó en `extract/core-asset-lab` y posteriormente se copió al repositorio independiente `Luguisaca/core-asset-lab`.
 
-## Decision
+## Decisión
 
-Core Asset Lab is an independent project from the Sprint 01 boundary onward.
+Core Asset Lab es un proyecto independiente desde el límite establecido en Sprint 01.
 
-Its current architectural baseline is a static Astro + TypeScript + Three.js application that processes user-selected GLB/GLTF assets in the browser and has no application backend.
+Su base arquitectónica actual es una aplicación estática Astro + TypeScript + Three.js que procesa en el navegador recursos GLB/GLTF seleccionados por la persona usuaria y no tiene backend de aplicación.
 
-The independent repository owns its post-boundary features, QA, architecture, documentation, distribution, releases, roadmap and future licensing decisions.
+El repositorio independiente es responsable de sus funcionalidades posteriores al límite, QA, arquitectura, documentación, distribución, releases, roadmap y decisiones de licencia.
 
-The project does not automatically inherit LUGUISACA website branding assets, Cloudflare configuration, production deployment model or licensing decisions.
+El proyecto no hereda automáticamente recursos de marca del sitio LUGUISACA, configuración Cloudflare, modelo de despliegue de producción ni decisiones de licencia.
 
-## Provenance
+## Procedencia
 
-- Source repository: `Luguisaca/luguisaca.com`
-- Source extraction branch: `extract/core-asset-lab`
-- Source checkpoint: `feefc5573ebd646534dbe9ad2eb397a02724d914`
-- Source boundary decision: `docs/decisions/0003-core-lab-project-boundary.md`
+- Repositorio de origen: `Luguisaca/luguisaca.com`
+- Rama de extracción de origen: `extract/core-asset-lab`
+- Checkpoint de origen: `feefc5573ebd646534dbe9ad2eb397a02724d914`
+- Decisión de límite en origen: `docs/decisions/0003-core-lab-project-boundary.md`
 
-The independent migration was compared against the source extraction at file/blob level. `.gitignore`, omitted during the manual web upload, was restored exactly from the source.
+La migración independiente se comparó con la extracción de origen a nivel de archivos/blobs. `.gitignore`, omitido durante la carga manual por web, se restauró exactamente desde el origen.
 
-## Consequences
+## Consecuencias
 
-- `luguisaca.com` continues to own its website-specific Core/Hero Lab.
-- General Core Asset Lab development occurs here and must not be merged back into the website merely because of historical origin.
-- Browser-local/static architecture is the current baseline and material departures require a new ADR.
-- Docker, desktop packaging and hosted releases may be evaluated independently; none is considered supported until implemented and validated.
-- The current license is not changed by this ADR. A future licensing model requires an explicit decision.
+- `luguisaca.com` continúa siendo responsable de su Core/Hero Lab específico del sitio.
+- El desarrollo general de Core Asset Lab ocurre aquí y no debe fusionarse de vuelta al sitio únicamente por su origen histórico.
+- La arquitectura estática/local en navegador es la base actual y cualquier cambio importante requiere un ADR nuevo.
+- Docker, empaquetado de escritorio y releases alojados pueden evaluarse independientemente; ninguno se considera soportado hasta implementarse y validarse.
+- Este ADR no define ni modifica la licencia actual. Las decisiones de licencia se gestionan explícitamente por separado.
