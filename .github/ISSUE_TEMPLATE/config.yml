@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Reportar un bug por correo
-    url: mailto:bugs@luguisaca.com
-    about: Canal alternativo para bugs ordinarios.
+  - name: Reportar una vulnerabilidad de seguridad
+    url: https://github.com/Luguisaca/core-asset-lab/security/advisories/new
+    about: Usa el canal privado de GitHub para vulnerabilidades. No publiques detalles explotables en Issues.
   - name: Contacto general LUGUISACA
     url: mailto:contacto@luguisaca.com
     about: Consultas generales relacionadas con el proyecto.
