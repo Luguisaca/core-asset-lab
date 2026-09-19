@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  pages: write
 
 concurrency:
   group: pages
@@ -31,6 +32,8 @@ jobs:
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund
