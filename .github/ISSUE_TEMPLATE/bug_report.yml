@@ -1,0 +1,54 @@
+name: Reporte de bug
+description: Reporta un problema reproducible de Core Asset Lab.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por ayudar a mejorar Core Asset Lab. No publiques credenciales, datos personales sensibles, modelos privados/propietarios ni detalles explotables de vulnerabilidades. Para seguridad, sigue SECURITY.md.
+  - type: input
+    id: version
+    attributes:
+      label: Versión o commit afectado
+      placeholder: "Ej.: 0.1.0 o SHA del commit"
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Entorno
+      description: Sistema operativo, navegador, versión de Node/npm si aplica y GPU cuando sea relevante.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducir
+      description: Describe una secuencia mínima y reproducible.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamiento esperado
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Comportamiento observado
+    validations:
+      required: true
+  - type: textarea
+    id: model
+    attributes:
+      label: Información del modelo
+      description: Comparte solo características necesarias y seguras. No adjuntes modelos confidenciales o propietarios.
+  - type: checkboxes
+    id: security
+    attributes:
+      label: Seguridad y privacidad
+      options:
+        - label: Confirmo que este reporte no contiene secretos, datos sensibles ni detalles de una vulnerabilidad que deba reportarse de forma privada.
+          required: true
