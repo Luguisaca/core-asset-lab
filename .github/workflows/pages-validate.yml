@@ -1,0 +1,100 @@
+name: Pages build validation
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-pages:
+    name: Validate Pages artifact
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22.19.0'
+          cache: 'npm'
+
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Production build
+        run: npm run build
+
+      - name: Validate project-site paths and assets
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import urlparse
+
+          BASE = "/core-asset-lab/"
+          html = Path("dist/index.html").read_text(encoding="utf-8")
+
+          class Assets(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.urls = []
+              def handle_starttag(self, tag, attrs):
+                  values = dict(attrs)
+                  if tag == "script" and values.get("src"):
+                      self.urls.append(values["src"])
+                  if tag == "link" and values.get("href"):
+                      self.urls.append(values["href"])
+
+          parser = Assets()
+          parser.feed(html)
+          local = []
+          for value in parser.urls:
+              parsed = urlparse(value)
+              if parsed.scheme or parsed.netloc or value.startswith(("data:", "#")):
+                  continue
+              if not value.startswith(BASE):
+                  raise SystemExit(f"asset outside Pages base path: {value}")
+              rel = parsed.path[len(BASE):]
+              target = Path("dist") / rel
+              if not target.is_file():
+                  raise SystemExit(f"missing built asset: {target}")
+              local.append(value)
+
+          if not local:
+              raise SystemExit("no local JS/CSS assets discovered in dist/index.html")
+
+          Path("/tmp/core-asset-lab-assets.txt").write_text("\n".join(local) + "\n", encoding="utf-8")
+          PY
+
+      - name: Smoke test under Pages base path
+        shell: bash
+        run: |
+          mkdir -p /tmp/pages-root/core-asset-lab
+          cp -R dist/. /tmp/pages-root/core-asset-lab/
+
+          python3 -m http.server 4173 --directory /tmp/pages-root > /tmp/core-asset-lab-pages.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+
+          for attempt in {1..20}; do
+            if curl --fail --silent --show-error http://127.0.0.1:4173/core-asset-lab/ -o /tmp/core-asset-lab-pages.html; then
+              break
+            fi
+            sleep 1
+          done
+
+          test -s /tmp/core-asset-lab-pages.html
+          grep -q 'Core Asset Lab' /tmp/core-asset-lab-pages.html
+          grep -q 'type="file"' /tmp/core-asset-lab-pages.html
+
+          while IFS= read -r asset; do
+            curl --fail --silent --show-error "http://127.0.0.1:4173$asset" -o /dev/null
+          done < /tmp/core-asset-lab-assets.txt
