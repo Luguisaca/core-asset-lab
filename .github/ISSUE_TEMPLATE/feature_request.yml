@@ -1,0 +1,31 @@
+name: Propuesta de mejora
+description: Propón una mejora o nueva capacidad para Core Asset Lab.
+title: "[Mejora]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema o necesidad
+      description: Explica qué necesidad resolvería la propuesta.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Propuesta
+      description: Describe el comportamiento o resultado deseado sin asumir una implementación específica.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto adicional
+      description: Casos de uso, ejemplos o restricciones relevantes.
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Alcance
+      options:
+        - label: Entiendo que una propuesta no implica que haya sido aceptada, priorizada o programada.
+          required: true
